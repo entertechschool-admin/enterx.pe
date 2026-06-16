@@ -25,9 +25,6 @@ export function Hero() {
       <Container className="relative grid items-center gap-10 py-16 md:grid-cols-[1.1fr_0.9fr] md:gap-10 md:py-24 lg:py-28">
         {/* Columna de texto */}
         <div className="order-2 md:order-1">
-          <p className="font-mono text-kicker uppercase text-label">
-            Unidad de IA aplicada · B2B
-          </p>
 
           <h1 className="mt-6 text-balance text-[clamp(34px,5vw,66px)] font-semibold leading-[1.05] tracking-[-0.03em]">
             {hero.titleParts.map((part, i) => (

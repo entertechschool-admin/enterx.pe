@@ -7,7 +7,8 @@ import type { ValueCard as ValueCardType } from "@/lib/content";
 
 /**
  * Sección "Servicios" — 3 líneas de negocio. Fondo claro.
- * La tarjeta de Co-implementación (featured) es oscura, es el diferenciador.
+ * Las 3 tarjetas tienen el mismo tratamiento (ninguna destacada).
+ * Efecto sutil en hover/touch: borde acento + leve elevación + icono rojo.
  * Server Component.
  */
 export function ValueProps() {
@@ -32,67 +33,37 @@ export function ValueProps() {
 }
 
 function ValueCard({ card }: { card: ValueCardType }) {
-  const featured = card.featured;
-
   return (
     <article
-      className={`
-        relative flex w-full flex-col rounded-card-lg border p-7 md:p-8
-        ${
-          featured
-            ? "border-ink bg-ink text-surface shadow-accent"
-            : "border-line bg-surface"
-        }
-      `}
+      className="
+        group relative flex w-full flex-col rounded-card-lg border border-line
+        bg-surface p-7 transition-all duration-300 ease-out
+        hover:-translate-y-1 hover:border-accent/40 hover:shadow-accent-sm
+        focus-within:-translate-y-1 focus-within:border-accent/40
+        active:-translate-y-0.5 motion-reduce:transform-none
+        motion-reduce:transition-none md:p-8
+      "
     >
-      {featured && (
-        <span className="absolute right-6 top-6 rounded-pill bg-accent px-2.5 py-1 font-mono text-[9px] uppercase tracking-label text-white">
-          Diferencial
-        </span>
-      )}
-
-      <span
-        className={`font-mono text-sectionnum ${
-          featured ? "text-accent" : "text-label"
-        }`}
-      >
+      <span className="font-mono text-sectionnum text-label transition-colors duration-300 group-hover:text-accent">
         {card.number}
       </span>
 
-      <span
-        className={`mt-6 ${featured ? "text-accent" : "text-ink/55"}`}
-      >
+      <span className="mt-6 text-ink/55 transition-colors duration-300 group-hover:text-accent">
         <ValueIcon name={card.icon} />
       </span>
 
       <h3 className="mt-5 text-h3">{card.title}</h3>
 
-      <p
-        className={`mt-4 text-[15px] leading-relaxed ${
-          featured ? "text-white/75" : "text-muted"
-        }`}
-      >
+      <p className="mt-4 text-[15px] leading-relaxed text-muted">
         {card.whatIs}
       </p>
 
       {/* Cliente ideal — separado, en mono, como dato */}
-      <div
-        className={`mt-6 border-t pt-5 ${
-          featured ? "border-white/15" : "border-line"
-        }`}
-      >
-        <p
-          className={`font-mono text-[10px] uppercase tracking-label ${
-            featured ? "text-white/45" : "text-label"
-          }`}
-        >
+      <div className="mt-6 border-t border-line pt-5">
+        <p className="font-mono text-[10px] uppercase tracking-label text-label">
           Para
         </p>
-        <p
-          className={`mt-2 text-[13.5px] leading-relaxed ${
-            featured ? "text-white/70" : "text-ink/70"
-          }`}
-        >
+        <p className="mt-2 text-[13.5px] leading-relaxed text-ink/70">
           {card.idealClient}
         </p>
       </div>

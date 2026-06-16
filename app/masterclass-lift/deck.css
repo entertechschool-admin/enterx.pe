@@ -1,0 +1,590 @@
+/*
+ * Tema EnterX para reveal.js — masterclass "IA Agéntica 2026".
+ * Rojo único #D9281A sobre negro #0D0D0D, tipografía Geist (+ Geist Mono para
+ * kickers/labels), sobrio y sin efectismo. Tokens espejados de tailwind.config.ts.
+ * Todo scoped bajo .reveal / .masterclass-deck → no contamina el resto del sitio.
+ */
+
+.masterclass-deck {
+  /* ── Paleta de marca ── */
+  --mc-accent: #d9281a;
+  --mc-accent-ink: #b71f12;
+  --mc-ink: #0d0d0d;
+  --mc-ink-800: #1a1a1a;
+  --mc-line: rgba(255, 255, 255, 0.1);
+  --mc-line-strong: rgba(255, 255, 255, 0.18);
+  --mc-muted: #b3b3b3;
+  --mc-label: #8a8a8a;
+  --mc-glow: 0 0 0 6px rgba(217, 40, 26, 0.18), 0 0 30px rgba(217, 40, 26, 0.5);
+
+  /* ── Override de variables nativas de reveal ── */
+  --r-background-color: var(--mc-ink);
+  --r-main-color: #ffffff;
+  --r-heading-color: #ffffff;
+  --r-link-color: var(--mc-accent);
+  --r-link-color-hover: var(--mc-accent-ink);
+  --r-selection-background-color: var(--mc-accent);
+  --r-selection-color: #ffffff;
+  --r-main-font: var(--font-geist-sans), system-ui, sans-serif;
+  --r-heading-font: var(--font-geist-sans), system-ui, sans-serif;
+  --r-main-font-size: 40px;
+  --r-heading-text-transform: none;
+  --r-heading-font-weight: 600;
+}
+
+/* El deck ocupa todo el viewport. reveal.js posiciona .slides de forma
+ * absoluta respecto a .reveal, así que .reveal necesita altura real. Como el
+ * deck vive en su propio <div> aislado (no toca <body>), lo fijamos al viewport. */
+.masterclass-deck.reveal {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--mc-ink);
+}
+
+/* reveal marca el viewport (aquí, <body>) con .reveal-viewport y le impone
+ * `color:#000; background:#fff` — eso pinta nuestros textos negros sobre negro
+ * y mete un fondo blanco. Lo neutralizamos: negro de marca y texto blanco. */
+.reveal-viewport {
+  background-color: var(--mc-ink, #0d0d0d) !important;
+  color: #ffffff;
+}
+
+/* Glow rojo ambiental MUY sutil de fondo (decorativo). */
+.masterclass-deck .slides::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    55% 50% at 78% 28%,
+    rgba(217, 40, 26, 0.1),
+    transparent 70%
+  );
+  z-index: 0;
+}
+
+/* Con center:false, cada slide ocupa toda la altura del canvas y centra su
+ * propio contenido verticalmente. Así el contenido llena la pantalla con un
+ * encuadre consistente (mismo padding) en vez de flotar en una franja media.
+ *
+ * OJO: reveal oculta las slides inactivas con `display:none`. Si forzáramos
+ * `display:flex !important` en TODAS las section, las mostraría todas apiladas.
+ * Por eso el flex va SOLO en la slide presente (.present); las demás conservan
+ * el display:none de reveal. reveal.css también fuerza `padding !important`, que
+ * neutralizamos aquí. */
+.masterclass-deck .slides section {
+  text-align: left;
+  box-sizing: border-box;
+  height: 900px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 70px 90px !important;
+}
+.masterclass-deck .slides section.present {
+  display: flex !important;
+}
+
+/* Slides marcados mc-fill: el grid de conceptos llena con su .mc-grid flex:1
+ * (arranca arriba). */
+.masterclass-deck .slides section.mc-fill {
+  justify-content: flex-start;
+}
+
+/* Slides de poco contenido (título, diagrama, loop, meta-prompting): en vez de
+ * apelmazar todo al centro, repartimos los bloques de primer nivel por toda la
+ * altura con espacio generoso, para que el slide se sienta lleno y equilibrado
+ * en pantalla compartida. */
+.masterclass-deck .slides section.mc-spread {
+  justify-content: space-between;
+  gap: 0.8em;
+}
+
+/* El slide de demo (placeholder) sí va centrado horizontalmente. */
+.masterclass-deck .slides section.mc-demo-slide {
+  align-items: center;
+  text-align: center;
+}
+
+/* Geist + blanco explícitos en todo el deck: reveal.css aplica su propia
+ * heading-font (serif Times) y heading-color a h1..h6 con la misma
+ * especificidad, y según el orden de carga puede ganar → headings ilegibles
+ * (oscuros sobre fondo negro). Fijamos familia y color sin depender de la
+ * herencia ni de variables de reveal. */
+.masterclass-deck,
+.masterclass-deck h1,
+.masterclass-deck h2,
+.masterclass-deck h3,
+.masterclass-deck h4,
+.masterclass-deck p,
+.masterclass-deck li,
+.masterclass-deck dt,
+.masterclass-deck dd,
+.masterclass-deck a,
+.masterclass-deck blockquote {
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  color: #ffffff;
+}
+
+/* ── Tipografía base ── */
+.masterclass-deck .mc-h1 {
+  font-size: clamp(3em, 7vw, 4.2em);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  margin: 0.1em 0 0.25em;
+  color: #ffffff;
+}
+
+.masterclass-deck .mc-h2 {
+  font-size: clamp(1.9em, 4.6vw, 2.6em);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin: 0.12em 0 0.3em;
+  color: #ffffff;
+}
+
+.masterclass-deck .mc-lead {
+  font-size: 1.5em;
+  color: #ffffff;
+  margin: 0 0 0.6em;
+}
+
+.masterclass-deck .mc-sub {
+  font-size: 1.1em;
+  color: var(--mc-muted);
+  margin: 0 0 1em;
+  max-width: 42ch;
+}
+
+.masterclass-deck .mc-sub--center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  max-width: 46ch;
+}
+
+.masterclass-deck .mc-accent {
+  color: var(--mc-accent);
+}
+
+/* ── Kicker / eyebrow (Geist Mono) ── */
+.masterclass-deck .mc-kicker {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.55em;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  margin: 0 0 0.4em;
+}
+.masterclass-deck .mc-kicker--center {
+  text-align: center;
+}
+.masterclass-deck .mc-kicker .mc-mute {
+  color: var(--mc-label);
+}
+.masterclass-deck .mc-kicker .mc-dash {
+  color: var(--mc-label);
+  margin: 0 0.7em;
+}
+
+.masterclass-deck .mc-brand-line {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.5em;
+  letter-spacing: 0.06em;
+  color: var(--mc-label);
+  margin-top: 1.4em;
+}
+
+/* ── Agenda ── */
+.masterclass-deck .mc-agenda {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: none;
+}
+.masterclass-deck .mc-agenda li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7em;
+  padding: 0.55em 0;
+  border-bottom: 1px solid var(--mc-line);
+  font-size: 1.05em;
+}
+.masterclass-deck .mc-agenda li:last-child {
+  border-bottom: none;
+}
+.masterclass-deck .mc-agenda-num {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  color: var(--mc-accent);
+  font-size: 0.7em;
+  letter-spacing: 0.12em;
+}
+.masterclass-deck .mc-agenda-body strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+.masterclass-deck .mc-agenda-body {
+  color: var(--mc-muted);
+}
+
+/* ── Grid 3×3 de conceptos ── */
+.masterclass-deck .mc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr; /* 3 filas iguales que llenan la altura disponible */
+  gap: 16px;
+  margin-top: 0.7em;
+  flex: 1; /* el grid crece para ocupar el alto restante del slide */
+  min-height: 0;
+}
+.masterclass-deck .mc-card {
+  border: 1px solid var(--mc-line);
+  border-radius: 14px;
+  padding: 18px 20px;
+  background: rgba(255, 255, 255, 0.02);
+}
+.masterclass-deck .mc-card--feature {
+  border-color: var(--mc-accent);
+  background: rgba(217, 40, 26, 0.07);
+  box-shadow: var(--mc-glow);
+}
+.masterclass-deck .mc-card-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+  flex-wrap: wrap;
+}
+.masterclass-deck .mc-card-num {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  color: var(--mc-accent);
+  font-size: 0.8em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+.masterclass-deck .mc-card-term {
+  font-size: 0.88em;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1;
+  color: #ffffff;
+}
+.masterclass-deck .mc-card-en {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.48em;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--mc-label);
+  width: 100%;
+}
+.masterclass-deck .mc-card-def {
+  font-size: 0.6em;
+  line-height: 1.45;
+  color: var(--mc-muted);
+  margin: 0.7em 0 0;
+}
+.masterclass-deck .mc-card-def em {
+  display: block;
+  margin-top: 0.5em;
+  color: var(--mc-label);
+  font-style: italic;
+}
+.masterclass-deck .mc-card-def strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* ── Diagrama de 3 pasos (demo) ── */
+.masterclass-deck .mc-steps {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0.6em;
+  margin-top: 0.6em;
+}
+.masterclass-deck .mc-step {
+  flex: 1;
+  border: 1px solid var(--mc-line);
+  border-radius: 14px;
+  padding: 1.3em 1.3em;
+  background: rgba(255, 255, 255, 0.02);
+}
+.masterclass-deck .mc-step--feature {
+  border-color: var(--mc-accent);
+  background: rgba(217, 40, 26, 0.08);
+}
+.masterclass-deck .mc-step-num {
+  color: var(--mc-accent);
+  font-size: 1.3em;
+  font-weight: 600;
+}
+.masterclass-deck .mc-step-title {
+  font-size: 0.82em;
+  font-weight: 600;
+  margin: 0.4em 0 0.35em;
+}
+.masterclass-deck .mc-step-desc {
+  font-size: 0.56em;
+  line-height: 1.4;
+  color: var(--mc-muted);
+  margin: 0;
+}
+.masterclass-deck .mc-step-arrow {
+  align-self: center;
+  color: var(--mc-accent);
+  font-size: 1.4em;
+}
+
+/* ── Demo slide (placeholder) ── */
+.masterclass-deck .mc-demo-slide {
+  text-align: center;
+}
+.masterclass-deck .mc-demo-title {
+  font-size: clamp(2.6em, 8vw, 4.2em);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin: 0.1em 0 0.3em;
+}
+
+/* ── FAQ ── */
+.masterclass-deck .mc-faq {
+  margin: 0.7em 0 0;
+  display: grid;
+  grid-auto-rows: 1fr; /* filas iguales que reparten el alto disponible */
+  gap: 0.7em;
+  flex: 1; /* la lista crece para llenar el slide */
+  min-height: 0;
+  align-content: stretch;
+}
+.masterclass-deck .mc-faq-item {
+  border-left: 2px solid var(--mc-accent);
+  padding: 0.3em 0 0.3em 0.9em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.masterclass-deck .mc-faq-item dt {
+  font-size: 0.92em;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.3em;
+}
+.masterclass-deck .mc-faq-item dd {
+  font-size: 0.74em;
+  line-height: 1.45;
+  color: var(--mc-muted);
+  margin: 0;
+}
+
+/* ── Contraste Vibe vs SDD ── */
+.masterclass-deck .mc-contrast {
+  display: flex;
+  align-items: stretch;
+  gap: 0.7em;
+  margin-top: 0.4em;
+}
+.masterclass-deck .mc-col {
+  flex: 1;
+  border: 1px solid var(--mc-line);
+  border-radius: 14px;
+  padding: 0.9em 1em;
+  background: rgba(255, 255, 255, 0.02);
+}
+.masterclass-deck .mc-col--feature {
+  border-color: var(--mc-accent);
+  background: rgba(217, 40, 26, 0.08);
+}
+.masterclass-deck .mc-col-title {
+  font-size: 0.95em;
+  font-weight: 600;
+  margin: 0 0 0.5em;
+}
+.masterclass-deck .mc-col-en {
+  display: block;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.5em;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--mc-label);
+  margin-top: 0.2em;
+}
+.masterclass-deck .mc-col-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.masterclass-deck .mc-col-list li {
+  font-size: 0.66em;
+  line-height: 1.45;
+  color: var(--mc-muted);
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--mc-line);
+}
+.masterclass-deck .mc-col-list li:last-child {
+  border-bottom: none;
+}
+.masterclass-deck .mc-col-list strong {
+  color: #ffffff;
+}
+.masterclass-deck .mc-contrast-arrow {
+  align-self: center;
+  color: var(--mc-accent);
+  font-size: 1.6em;
+}
+
+/* ── Frase ancla / cierre (voz Bruno) ── */
+.masterclass-deck .mc-anchor {
+  font-size: 0.78em;
+  font-weight: 500;
+  color: #ffffff;
+  margin-top: 0.9em;
+  padding-left: 0.7em;
+  border-left: 3px solid var(--mc-accent);
+  line-height: 1.3;
+}
+
+/* ── Meta-prompting ── */
+.masterclass-deck .mc-quote {
+  font-size: 0.95em;
+  font-weight: 500;
+  color: #ffffff;
+  border-left: 3px solid var(--mc-accent);
+  padding: 0.2em 0 0.2em 0.7em;
+  margin: 0.5em 0;
+  line-height: 1.3;
+}
+.masterclass-deck .mc-note {
+  font-size: 0.72em;
+  color: var(--mc-muted);
+  line-height: 1.45;
+  max-width: 52ch;
+  margin: 0.6em 0 0;
+}
+
+/* ── Loop de calidad ── */
+.masterclass-deck .mc-loop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7em;
+  margin: 0.4em 0;
+  flex-wrap: wrap;
+}
+.masterclass-deck .mc-loop-step {
+  border: 1px solid var(--mc-line-strong);
+  border-radius: 100px;
+  padding: 0.55em 1.4em;
+  font-size: 0.82em;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.03);
+}
+.masterclass-deck .mc-loop-step--feature {
+  border-color: var(--mc-accent);
+  background: var(--mc-accent);
+  color: #ffffff;
+}
+.masterclass-deck .mc-loop-arrow {
+  color: var(--mc-accent);
+  font-size: 1.3em;
+}
+
+/* ── Cierre + CTA ── */
+.masterclass-deck .mc-recap {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: recap;
+}
+.masterclass-deck .mc-recap li {
+  counter-increment: recap;
+  font-size: 0.95em;
+  color: var(--mc-muted);
+  padding: 0.4em 0 0.4em 1.6em;
+  position: relative;
+  border-bottom: 1px solid var(--mc-line);
+}
+.masterclass-deck .mc-recap li:last-child {
+  border-bottom: none;
+}
+.masterclass-deck .mc-recap li::before {
+  content: counter(recap);
+  position: absolute;
+  left: 0;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  color: var(--mc-accent);
+  font-size: 0.85em;
+}
+.masterclass-deck .mc-recap strong {
+  color: #ffffff;
+}
+.masterclass-deck .mc-cta-line {
+  font-size: 0.92em;
+  color: var(--mc-muted);
+  margin: 0.9em 0 0.6em;
+}
+.masterclass-deck .mc-final {
+  font-size: 1.05em;
+  font-weight: 500;
+  color: #ffffff;
+  border-left: 3px solid var(--mc-accent);
+  padding-left: 0.7em;
+  margin: 0.4em 0 0.6em;
+  line-height: 1.3;
+}
+.masterclass-deck .mc-cta {
+  display: inline-block;
+  background: var(--mc-accent);
+  color: #ffffff;
+  font-size: 0.6em;
+  font-weight: 500;
+  padding: 0.7em 1.6em;
+  border-radius: 100px;
+  text-decoration: none;
+  margin-top: 0.6em;
+  transition: background 0.2s ease;
+}
+.masterclass-deck .mc-cta:hover {
+  background: var(--mc-accent-ink);
+}
+
+/* ── Controles y barra de progreso en rojo de marca ── */
+.masterclass-deck .controls {
+  color: var(--mc-accent);
+}
+.masterclass-deck .progress {
+  color: var(--mc-accent);
+}
+
+/* ── Foco visible (WCAG 2.2 AA) ── */
+.masterclass-deck a:focus-visible,
+.masterclass-deck .mc-cta:focus-visible {
+  outline: 2px solid var(--mc-accent);
+  outline-offset: 3px;
+}
+
+/* ── Responsive: en pantallas angostas el grid y filas se apilan ── */
+@media (max-width: 700px) {
+  .masterclass-deck .mc-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .masterclass-deck .mc-steps,
+  .masterclass-deck .mc-contrast {
+    flex-direction: column;
+  }
+  .masterclass-deck .mc-step-arrow,
+  .masterclass-deck .mc-contrast-arrow {
+    transform: rotate(90deg);
+  }
+}
+
+/* ── prefers-reduced-motion: fragments visibles sin animar ── */
+@media (prefers-reduced-motion: reduce) {
+  .masterclass-deck .fragment {
+    transition: none !important;
+  }
+  .masterclass-deck .slides section {
+    transition: none !important;
+  }
+}

@@ -11,18 +11,19 @@ export type TitlePart = { text: string; accent?: boolean };
 
 export const hero = {
   /**
-   * "El 100% de las empresas usa ChatGPT. Menos del 5% usa agentes de IA."
-   * El fragmento "Menos del 5%" va en acento rojo.
+   * "+92% de las empresas usa ChatGPT, pero menos del 5% tiene agentes de IA trabajando."
+   * El fragmento "menos del 5%" va en acento rojo.
+   * Cifra <5% defendible (Gartner 2025: <5% de apps empresariales con agentes específicos).
    */
   titleParts: [
-    { text: "El 100% de las empresas usa ChatGPT. " },
-    { text: "Menos del 5%", accent: true },
-    { text: " usa agentes de IA." },
+    { text: "+92% de las empresas usa ChatGPT, pero " },
+    { text: "menos del 5%", accent: true },
+    { text: " tiene agentes de IA trabajando." },
   ] as TitlePart[],
   subhead:
-    "El salto del uso básico a los agentes no son las herramientas — es el criterio. En EnterX lo construimos contigo.",
+    "El salto del uso básico a los agentes no son las herramientas — es un sistema probado.",
   ctaLabel: "Conversemos",
-  footnote: ["enterx.pe", "enterx.io"],
+  footnote: [],
 } as const;
 
 // ---- Navegación ----------------------------------------------------------
@@ -147,6 +148,6 @@ export const closing = {
 } as const;
 
 export const footer = {
-  primary: "EnterX · enterx.pe · 2026",
-  backing: "CETEMIN · Enter Tech School",
+  primary: "EnterX · 2026",
+  backing: "Respaldados por CETEMIN & Enter Tech School",
 } as const;
