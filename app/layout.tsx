@@ -1,13 +1,38 @@
 import type { Metadata, Viewport } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
+import { SITE_URL, META, ORG_JSONLD } from "@/lib/site";
 import "./globals.css";
 
-// Metadata mínima temporal (la completa — OG, canonical, JSON-LD — llega en la Fase 4).
 export const metadata: Metadata = {
-  title: "EnterX — IA aplicada para empresas",
-  description:
-    "EnterX lleva a las empresas del uso básico de IA a agentes que ejecutan. Capacidad instalada, no dependencia.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: META.title,
+    template: META.titleTemplate,
+  },
+  description: META.description,
+  applicationName: "EnterX",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: META.locale,
+    url: SITE_URL,
+    siteName: "EnterX",
+    title: META.title,
+    description: META.description,
+    // La imagen la provee app/opengraph-image.tsx (convención de Next).
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: META.title,
+    description: META.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export const viewport: Viewport = {
@@ -21,7 +46,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        {/* JSON-LD Organization (CETEMIN → Enter Tech School → EnterX). */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_JSONLD) }}
+        />
+      </body>
     </html>
   );
 }
