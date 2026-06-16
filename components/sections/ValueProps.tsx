@@ -1,6 +1,7 @@
 import { value } from "@/lib/content";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Reveal } from "@/components/ui/Reveal";
 import { ValueIcon } from "@/components/icons/ValueIcons";
 import type { ValueCard as ValueCardType } from "@/lib/content";
 
@@ -13,13 +14,16 @@ export function ValueProps() {
   return (
     <section id="servicios" className="bg-surface text-ink">
       <Container className="py-20 md:py-section">
-        <SectionHeader number="02" label="Servicios" />
-
-        <h2 className="mt-6 max-w-2xl text-h2 text-balance">{value.lead}</h2>
+        <Reveal>
+          <SectionHeader number="02" label="Servicios" />
+          <h2 className="mt-6 max-w-2xl text-h2 text-balance">{value.lead}</h2>
+        </Reveal>
 
         <div className="mt-14 grid gap-5 md:grid-cols-3">
-          {value.cards.map((card) => (
-            <ValueCard key={card.number} card={card} />
+          {value.cards.map((card, i) => (
+            <Reveal key={card.number} delay={i * 110} className="flex">
+              <ValueCard card={card} />
+            </Reveal>
           ))}
         </div>
       </Container>
@@ -33,7 +37,7 @@ function ValueCard({ card }: { card: ValueCardType }) {
   return (
     <article
       className={`
-        relative flex flex-col rounded-card-lg border p-7 md:p-8
+        relative flex w-full flex-col rounded-card-lg border p-7 md:p-8
         ${
           featured
             ? "border-ink bg-ink text-surface shadow-accent"
