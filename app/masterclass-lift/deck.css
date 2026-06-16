@@ -259,12 +259,12 @@
 .masterclass-deck .mc-card-num {
   font-family: var(--font-geist-mono), ui-monospace, monospace;
   color: var(--mc-accent);
-  font-size: 0.8em;
+  font-size: 0.95em;
   font-weight: 600;
   letter-spacing: 0.06em;
 }
 .masterclass-deck .mc-card-term {
-  font-size: 0.88em;
+  font-size: 1.05em;
   font-weight: 600;
   margin: 0;
   line-height: 1;
@@ -272,17 +272,17 @@
 }
 .masterclass-deck .mc-card-en {
   font-family: var(--font-geist-mono), ui-monospace, monospace;
-  font-size: 0.48em;
+  font-size: 0.55em;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--mc-label);
   width: 100%;
 }
 .masterclass-deck .mc-card-def {
-  font-size: 0.6em;
+  font-size: 0.82em;
   line-height: 1.45;
   color: var(--mc-muted);
-  margin: 0.7em 0 0;
+  margin: 0.8em 0 0;
 }
 .masterclass-deck .mc-card-def em {
   display: block;
