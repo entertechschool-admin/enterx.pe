@@ -81,10 +81,6 @@ export default function Deck() {
             IA Agéntica <span className="mc-accent">2026</span>
           </h1>
           <p className="mc-lead">De lo simple a lo complejo.</p>
-          <p className="mc-brand-line">
-            Enter Tech School · <span className="mc-accent">EnterX</span> ·
-            respaldo CETEMIN
-          </p>
         </section>
 
         {/* ───────── 2 · AGENDA ───────── */}
@@ -96,12 +92,12 @@ export default function Deck() {
             </span>
             <span className="mc-mute">AGENDA</span>
           </p>
-          <h2 className="mc-h2">La hora, en tres bloques</h2>
+          <h2 className="mc-h2">3 bloques</h2>
           <ol className="mc-agenda">
             <li>
               <span className="mc-agenda-num">01</span>
               <span className="mc-agenda-body">
-                <strong>El idioma</strong> — 9 conceptos clave de la IA agéntica.
+                <strong>Nuevo Glosario</strong> — 9 conceptos clave de la IA agéntica.
               </span>
             </li>
             <li>
@@ -127,9 +123,9 @@ export default function Deck() {
             <span className="mc-dash" aria-hidden>
               —
             </span>
-            <span className="mc-mute">VOCABULARIO</span>
+            <span className="mc-mute">GLOSARIO</span>
           </p>
-          <h2 className="mc-h2">9 palabras que cambian el juego</h2>
+          <h2 className="mc-h2">9 términos clave</h2>
           <p className="mc-sub">
             El idioma de la IA agéntica, de lo simple a lo complejo.
           </p>
@@ -258,7 +254,7 @@ export default function Deck() {
             </article>
 
             {/* 9 · Harness (destacado, cierre del bloque) */}
-            <article className="mc-card mc-card--feature" role="listitem">
+            <article className="mc-card" role="listitem">
               <header className="mc-card-head">
                 <span className="mc-card-num">9</span>
                 <h3 className="mc-card-term">Harness</h3>
@@ -286,7 +282,6 @@ export default function Deck() {
             <span className="mc-mute">DEMO EN VIVO</span>
           </p>
           <h2 className="mc-h2">De una carpeta vacía a un sistema que ejecuta</h2>
-          <p className="mc-sub">Tres prompts. En vivo. Sin red.</p>
 
           <div className="mc-steps">
             <div className="mc-step fragment" data-fragment-index={0}>
@@ -324,14 +319,11 @@ export default function Deck() {
         {/* ───────── 5 · PLACEHOLDER DEMO EN VIVO ───────── */}
         <section data-background-color="#0D0D0D" className="mc-demo-slide">
           <p className="mc-kicker mc-kicker--center">
-            <span className="mc-mute">COMPARTO LA TERMINAL</span>
+            <span className="mc-mute">Claude Code || Antigravity</span>
           </p>
           <h2 className="mc-demo-title">
             DEMO <span className="mc-accent">EN VIVO</span>
           </h2>
-          <p className="mc-sub mc-sub--center">
-            Salgo de los slides. Construimos el sistema en la terminal.
-          </p>
         </section>
 
         {/* ───────── 6 · PREGUNTAS FRECUENTES ───────── */}
@@ -413,92 +405,83 @@ export default function Deck() {
           </div>
 
           <p className="mc-anchor fragment" data-fragment-index={1}>
-            “La IA no premia al que más teclea. Premia al que piensa más claro.”
+            “No se trata de escribir o corregir más, se trata de planificar mejor.”
           </p>
         </section>
 
         {/* ───────── 8a · META-PROMPTING ───────── */}
         <section className="mc-spread" data-background-color="#0D0D0D">
           <p className="mc-kicker">
-            <span className="mc-mute">MENTALIDAD · META-PROMPTING</span>
+            <span className="mc-mute">MENTALIDAD · META-WORK</span>
           </p>
-          <h2 className="mc-h2">Mejora tu propio prompt</h2>
+          <h2 className="mc-h2">Planifica y crea el sistema</h2>
           <p className="mc-sub">
-            Antes de pedirle que ejecute, pídele que mejore tu pedido.
+            Bosquejar - validar - crear el SPEC.md + CLAUDE/AGENT.md
           </p>
           <blockquote className="mc-quote">
-            “Antes de hacerlo, dime: ¿qué te falta saber para hacer esto
-            excelente?”
+            Prompt Engineering {'<'} Context Engineering {'<'} SDD
           </blockquote>
           <p className="mc-note">
-            El agente expone los huecos de tu instrucción antes de gastar esfuerzo
-            en la dirección equivocada. El agente como copiloto de tu propio
-            pensamiento.
+            Por años, el idioma de las computadoras eran los lenguajes de programación. <strong>Hoy el idioma es la especificación</strong>.
           </p>
         </section>
 
         {/* ───────── 8b · META-PLANNING + LOOP (revelado #4) ───────── */}
         <section className="mc-spread" data-background-color="#0D0D0D">
           <p className="mc-kicker">
-            <span className="mc-mute">MENTALIDAD · META-PLANNING</span>
+            <span className="mc-mute">MENTALIDAD · PLAN vs. IMPLEMENTACIÓN</span>
           </p>
-          <h2 className="mc-h2">Planea el plan antes de tocar nada</h2>
+          <h2 className="mc-h2">Planifica siempre. Luego apruebas y ejecutas</h2>
           <p className="mc-sub">
-            Primero un plan; lo revisas y apruebas; recién entonces se ejecuta. Nada
-            a ciegas. <em>Este mismo brief se hizo así.</em>
+            Así funciona el flujo completo:
           </p>
 
           <div className="mc-loop">
             <div className="mc-loop-step fragment" data-fragment-index={0}>
-              Hipótesis
+              Hipótesis / Boquejo
             </div>
             <span className="mc-loop-arrow fragment" data-fragment-index={1} aria-hidden>
               →
             </span>
             <div className="mc-loop-step fragment" data-fragment-index={1}>
-              Alternativas
+              Validar / pulir (wireframe)
             </div>
             <span className="mc-loop-arrow fragment" data-fragment-index={2} aria-hidden>
               →
             </span>
             <div className="mc-loop-step fragment" data-fragment-index={2}>
-              Confirmación
+              Generar SPEC.md + CLAUDE/AGENT.md
             </div>
             <span className="mc-loop-arrow fragment" data-fragment-index={3} aria-hidden>
               →
             </span>
             <div className="mc-loop-step mc-loop-step--feature fragment" data-fragment-index={3}>
-              Ejecutar
+              Planificar en ~4 fases
+            </div>
+            <span className="mc-loop-arrow fragment" data-fragment-index={3} aria-hidden>
+              →
+            </span>
+            <div className="mc-loop-step mc-loop-step--feature fragment" data-fragment-index={3}>
+              Implementar
             </div>
           </div>
 
           <p className="mc-anchor">
-            “Vibe coding para explorar. SDD para producir. El que mejor especifica,
-            gana — y especificar es pensar claro, no programar.”
+            Si los primeros 3 pasos fueron buenos y la planificación se hace con "thinking" → la implementación se hace en "one-shot”
           </p>
         </section>
 
-        {/* ───────── 9 · CIERRE + CTA ───────── */}
-        <section className="mc-spread" data-background-color="#0D0D0D">
-          <p className="mc-kicker">
-            <span className="mc-mute">CIERRE</span>
-          </p>
-          <h2 className="mc-h2">Lo que te llevas</h2>
-          <ol className="mc-recap">
-            <li>Aprendiste el idioma (9 conceptos).</li>
-            <li>Viste un agente trabajar de verdad.</li>
-            <li>
-              Te llevas la mentalidad (<strong>especificar &gt; teclear</strong>).
-            </li>
-          </ol>
-          <p className="mc-cta-line">
-            Tu tarea: identifica <span className="mc-accent">una</span> rutina
-            repetitiva de tu negocio esta semana. Esa es tu primera skill.
-          </p>
-          <p className="mc-final">
-            “La IA no te va a reemplazar. Te va a reemplazar quien sepa usarla.
-            Empieza simple.”
-          </p>
+        {/* ───────── 9 · CIERRE — GRACIAS + WHATSAPP + QR ───────── */}
+        <section className="mc-demo-slide mc-close" data-background-color="#0D0D0D">
+          <h1 className="mc-h1 mc-thanks">
+            GR<span className="mc-accent">A</span>CIAS
+          </h1>
+          <p className="mc-close-line">Nos vemos por WhatsApp.</p>
+          <img
+            className="mc-qr"
+            src="/qr_enter-lifters_whatsapp.png"
+            alt="Código QR para unirse al grupo de WhatsApp enterx-lifters"
+          />
           <p className="mc-brand-line">
             Enter Tech School · <span className="mc-accent">EnterX</span> ·
             enterx.pe · respaldo CETEMIN
