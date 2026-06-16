@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-surface text-ink font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Las anclas se detienen bajo el nav sticky (62px) en vez de quedar ocultas. */
+  section[id] {
+    scroll-margin-top: theme("spacing.nav");
+  }
+
+  /* Selección con el acento de marca. */
+  ::selection {
+    background-color: theme("colors.accent.DEFAULT");
+    color: #ffffff;
+  }
+
+  /* Foco visible coherente con la marca (WCAG 2.2 AA). */
+  :focus-visible {
+    outline: 2px solid theme("colors.accent.DEFAULT");
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  /* Sin saltos de scroll ni animaciones cuando el usuario lo pide. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}

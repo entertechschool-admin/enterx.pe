@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#0d0d0d">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#0d0d0d"/>
+    <g transform="translate(600 400)">
+      <circle cx="-150" cy="-120" r="70" fill="#d7d7d7"/>
+      <rect x="-150" y="-120" width="6" height="240" fill="#bdbdbd" transform="rotate(20 -150 -120)"/>
+      <circle cx="-90" cy="120" r="70" fill="#d7d7d7"/>
+      <circle cx="120" cy="-40" r="48" fill="#cfcfcf"/>
+      <circle cx="150" cy="150" r="56" fill="#d9281a"/>
+      <text x="0" y="280" font-family="Arial, sans-serif" font-size="86" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="2">enterX</text>
+    </g>
+  </svg>
+</template>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; background:#ffffff; color:#0d0d0d; font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+  section[id]{ scroll-margin-top:62px; }
+  ::selection{ background:#d9281a; color:#fff; }
+  a{ text-decoration:none; color:inherit; }
+</style>
+</helmet>
+
+<nav style="position:sticky; top:0; z-index:50; height:62px; background:rgba(13,13,13,0.88); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:space-between; padding:0 32px;">
+  <a href="#portada" style="display:flex; align-items:center; gap:10px;">
+    <img src="assets/logo_enterx.png" alt="EnterX" style="height:21px; width:auto; display:block;" />
+    <span style="font-family:'Geist Mono',monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.4); border-left:1px solid rgba(255,255,255,0.18); padding-left:10px;">Manual de Marca</span>
+  </a>
+  <div style="display:flex; align-items:center; gap:24px; font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.06em; white-space:nowrap;">
+    <a href="#arquitectura" data-navlink="arquitectura" style="color:rgba(255,255,255,0.5); transition:color .2s;">Arquitectura</a>
+    <a href="#la-x" data-navlink="la-x" style="color:rgba(255,255,255,0.5); transition:color .2s;">La X</a>
+    <a href="#lineas" data-navlink="lineas" style="color:rgba(255,255,255,0.5); transition:color .2s;">Líneas</a>
+    <a href="#valor" data-navlink="valor" style="color:rgba(255,255,255,0.5); transition:color .2s;">Valor</a>
+    <a href="#posicion" data-navlink="posicion" style="color:rgba(255,255,255,0.5); transition:color .2s;">Posición</a>
+    <a href="#frameworks" data-navlink="frameworks" style="color:rgba(255,255,255,0.5); transition:color .2s;">Frameworks</a>
+    <a href="#voz" data-navlink="voz" style="color:rgba(255,255,255,0.5); transition:color .2s;">Voz</a>
+    <a href="#reglas" data-navlink="reglas" style="color:rgba(255,255,255,0.5); transition:color .2s;">Reglas</a>
+    <a href="#moodboard" data-navlink="moodboard" style="color:rgba(255,255,255,0.5); transition:color .2s;">Moodboard</a>
+  </div>
+</nav>
+
+<section id="portada" data-screen-label="Portada" style="position:relative; min-height:calc(100vh - 62px); background:#0d0d0d; color:#ffffff; overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; padding:48px 56px 40px;">
+  <div style="position:absolute; right:-120px; top:50%; transform:translateY(-50%); width:min(640px,52vw); pointer-events:none;">
+    <img src="assets/isotipo_enterx.png" alt="Isótopo EnterX" style="width:100%; height:auto; display:block; filter:drop-shadow(0 30px 80px rgba(0,0,0,0.6));" />
+  </div>
+  <div style="position:absolute; inset:0; background:radial-gradient(60% 50% at 18% 92%, rgba(217,40,26,0.10), transparent 70%); pointer-events:none;"></div>
+
+  <div style="position:relative; display:flex; justify-content:space-between; align-items:center; font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.45);">
+    <span>Sistema de identidad de marca</span>
+    <span>v1 · 2026</span>
+  </div>
+
+  <div style="position:relative; max-width:920px;">
+    <div style="font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.22em; text-transform:uppercase; color:#d9281a; margin-bottom:28px;">EnterX — Brand Book</div>
+    <h1 style="margin:0; font-size:clamp(40px,6.4vw,86px); font-weight:600; line-height:1.0; letter-spacing:-0.035em; max-width:16ch;">No dejamos a las empresas dependientes de nosotros. <span style="color:#d9281a;">Las dejamos capaces.</span></h1>
+  </div>
+
+  <div style="position:relative; display:flex; justify-content:space-between; align-items:flex-end; gap:24px;">
+    <div style="display:flex; gap:40px; font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.1em; color:rgba(255,255,255,0.5);">
+      <span style="color:rgba(255,255,255,0.35);">DOMINIO PRINCIPAL</span>
+      <span>enterx.pe</span>
+      <span style="color:rgba(255,255,255,0.35);">GLOBAL</span>
+      <span>enterx.io</span>
+    </div>
+    <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.4); display:flex; align-items:center; gap:10px;">Desliza<span style="display:inline-block; width:24px; height:1px; background:rgba(255,255,255,0.4);"></span></div>
+  </div>
+</section>
+
+<section id="que-es" data-screen-label="Qué es EnterX" style="padding:120px 56px; background:#ffffff; border-bottom:1px solid #ededed;">
+  <div style="max-width:1120px; margin:0 auto;">
+    <div style="font-family:'Geist Mono',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:40px;"><span style="color:#d9281a;">01</span> &nbsp;<span style="color:#8a8a8a;">Qué es EnterX</span></div>
+    <p style="margin:0; font-size:clamp(26px,3.4vw,42px); font-weight:500; line-height:1.22; letter-spacing:-0.02em; max-width:20ch; color:#0d0d0d;">EnterX es la unidad de IA aplicada que lleva a las empresas del uso básico a <span style="color:#d9281a;">resultados reales</span> — formando equipos y construyendo sistemas que quedan en casa.</p>
+    <p style="margin:28px 0 0; font-size:18px; line-height:1.65; color:#6b6b6b; max-width:62ch;">No vendemos cursos sueltos ni pilotos que nadie mantiene. Instalamos capacidad: criterio, práctica y sistemas que la organización opera por sí misma.</p>
+  </div>
+</section>
+
+<section id="arquitectura" data-screen-label="Arquitectura de marca" style="padding:120px 56px; background:#f7f7f7; border-bottom:1px solid #ededed;">
+  <div style="max-width:1120px; margin:0 auto;">
+    <div style="font-family:'Geist Mono',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:24px;"><span style="color:#d9281a;">02</span> &nbsp;<span style="color:#8a8a8a;">Arquitectura de marca</span></div>
+    <h2 style="margin:0 0 12px; font-size:clamp(30px,4vw,52px); font-weight:600; line-height:1.05; letter-spacing:-0.025em; color:#0d0d0d;">Una sola casa, roles claros</h2>
+    <p style="margin:0 0 64px; font-size:18px; line-height:1.65; color:#6b6b6b; max-width:58ch;">EnterX nace del respaldo de CETEMIN y opera dentro de Enter Tech School. Cada marca tiene un público y una promesa distinta.</p>
+
+    <div style="display:flex; flex-direction:column; align-items:center;">
+      <div style="width:100%; max-width:360px; background:#ffffff; border:1px solid #e6e6e6; border-radius:14px; padding:22px 26px; text-align:center;">
+        <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#8a8a8a; margin-bottom:8px;">Respaldo institucional</div>
+        <div style="font-size:24px; font-weight:600; letter-spacing:-0.01em;">CETEMIN</div>
+        <div style="font-size:14px; color:#6b6b6b; margin-top:6px;">Trayectoria y credibilidad. Centro de formación técnica.</div>
+      </div>
+      <div style="width:2px; height:30px; background:#d8d8d8;"></div>
+      <div style="width:100%; max-width:360px; background:#ffffff; border:1px solid #e6e6e6; border-radius:14px; padding:22px 26px; text-align:center;">
+        <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#8a8a8a; margin-bottom:8px;">La escuela</div>
+        <div style="font-size:24px; font-weight:600; letter-spacing:-0.01em;">Enter Tech School</div>
+        <div style="font-size:14px; color:#6b6b6b; margin-top:6px;">Formación en tecnología de estado del arte.</div>
+      </div>
+      <div style="width:2px; height:30px; background:#d8d8d8;"></div>
+      <div style="position:relative; width:100%; max-width:760px; height:30px;">
+        <div style="position:absolute; top:0; left:25%; right:25%; height:2px; background:#d8d8d8;"></div>
+        <div style="position:absolute; top:0; left:25%; width:2px; height:30px; background:#d8d8d8;"></div>
+        <div style="position:absolute; top:0; right:25%; width:2px; height:30px; background:#d8d8d8;"></div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; width:100%; max-width:760px;">
+        <div style="background:#ffffff; border:1px solid #e6e6e6; border-radius:14px; padding:24px 26px; text-align:center;">
+          <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#8a8a8a; margin-bottom:8px;">B2C · Personas</div>
+          <div style="font-size:22px; font-weight:600; letter-spacing:-0.01em;">Academia</div>
+          <div style="font-size:14px; color:#6b6b6b; margin-top:6px;">Profesionales que quieren subir de nivel.</div>
+        </div>
+        <div style="background:#0d0d0d; border:1px solid #0d0d0d; border-radius:14px; padding:24px 26px; text-align:center; color:#fff; position:relative; box-shadow:0 18px 40px rgba(217,40,26,0.18);">
+          <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#d9281a; margin-bottom:8px;">B2B · Empresas</div>
+          <div style="font-size:22px; font-weight:600; letter-spacing:-0.01em;">EnterX</div>
+          <div style="font-size:14px; color:rgba(255,255,255,0.6); margin-top:6px;">Transformación con IA para organizaciones.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="la-x" data-screen-label="La X" style="padding:120px 56px; background:#ffffff; border-bottom:1px solid #ededed;">
+  <div style="max-width:1120px; margin:0 auto;">
+    <div style="font-family:'Geist Mono',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:24px;"><span style="color:#d9281a;">03</span> &nbsp;<span style="color:#8a8a8a;">La «X»</span></div>
+    <h2 style="margin:0 0 12px; font-size:clamp(30px,4vw,52px); font-weight:600; line-height:1.05; letter-spacing:-0.025em; color:#0d0d0d;">La X es evolución</h2>
+    <p style="margin:0 0 56px; font-size:18px; line-height:1.65; color:#6b6b6b; max-width:62ch;">La X es un conjunto de puntos: cada uno, un nivel de madurez en IA. No representa un estado fijo, sino un proceso de constante evolución que llevamos a empresas y personas. El punto rojo marca dónde empieza el valor real.</p>
+
+    <div style="display:grid; grid-template-columns:1.05fr 1fr; gap:56px; align-items:center;">
+      <div style="display:flex; flex-direction:column; gap:18px;">
+        <div style="display:flex; align-items:baseline; gap:16px; padding-bottom:18px; border-bottom:1px solid #ededed;">
+          <span style="font-family:'Geist Mono',monospace; font-size:13px; color:#d9281a; min-width:34px;">01</span>
+          <div><div style="font-size:21px; font-weight:600; letter-spacing:-0.01em;">Un conjunto de puntos</div><div style="font-size:15px; color:#6b6b6b; margin-top:2px;">Cada esfera del símbolo es un nivel de madurez en IA.</div></div>
+        </div>
+        <div style="display:flex; align-items:baseline; gap:16px; padding-bottom:18px; border-bottom:1px solid #ededed;">
+          <span style="font-family:'Geist Mono',monospace; font-size:13px; color:#d9281a; min-width:34px;">02</span>
+          <div><div style="font-size:21px; font-weight:600; letter-spacing:-0.01em;">Un proceso, no un estado</div><div style="font-size:15px; color:#6b6b6b; margin-top:2px;">Avanzamos nivel a nivel, en evolución constante.</div></div>
+        </div>
+        <div style="display:flex; align-items:baseline; gap:16px;">
+          <span style="font-family:'Geist Mono',monospace; font-size:13px; color:#d9281a; min-width:34px;">03</span>
+          <div><div style="font-size:21px; font-weight:600; letter-spacing:-0.01em;">El punto rojo</div><div style="font-size:15px; color:#6b6b6b; margin-top:2px;">El salto al valor real: del uso básico a resultados.</div></div>
+        </div>
+      </div>
+      <div style="position:relative; aspect-ratio:1/1; background:#0d0d0d; border-radius:20px; overflow:hidden; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:48px;">
+        <div style="position:absolute; inset:0; background:radial-gradient(50% 50% at 72% 76%, rgba(217,40,26,0.18), transparent 65%);"></div>
+        <img src="assets/isotipo_enterx.png" alt="Símbolo EnterX" style="position:relative; width:74%; height:auto; filter:drop-shadow(0 24px 60px rgba(0,0,0,0.6));" />
+        <div style="position:absolute; bottom:26px; left:0; right:0; text-align:center; font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.55);">Esferas = niveles · <span style="color:#d9281a;">punto rojo = valor real</span></div>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:64px;">
+      <div style="background:#f7f7f7; border:1px solid #ededed; border-radius:16px; padding:32px 34px;">
+        <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#8a8a8a; margin-bottom:18px;">ADN tecnológico</div>
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div style="display:flex; align-items:flex-start; gap:12px;"><span style="width:7px; height:7px; background:#d9281a; border-radius:50%; margin-top:8px; flex-shrink:0;"></span><div><b style="font-weight:600;">Estado del arte.</b> <span style="color:#6b6b6b;">Trabajamos con lo más avanzado, no con lo de moda.</span></div></div>
+          <div style="display:flex; align-items:flex-start; gap:12px;"><span style="width:7px; height:7px; background:#d9281a; border-radius:50%; margin-top:8px; flex-shrink:0;"></span><div><b style="font-weight:600;">I+D real.</b> <span style="color:#6b6b6b;">Investigación aplicada a problemas concretos.</span></div></div>
+          <div style="display:flex; align-items:flex-start; gap:12px;"><span style="width:7px; height:7px; background:#d9281a; border-radius:50%; margin-top:8px; flex-shrink:0;"></span><div><b style="font-weight:600;">Systems thinking.</b> <span style="color:#6b6b6b;">Pensamos en sistemas, no en herramientas sueltas.</span></div></div>
+        </div>
+      </div>
+      <div style="background:#f7f7f7; border:1px solid #ededed; border-radius:16px; padding:32px 34px; display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#8a8a8a; margin-bottom:18px;">Pronunciación &amp; dominios</div>
+          <div style="font-size:24px; font-weight:600; letter-spacing:-0.01em;">EnterX <span style="color:#8a8a8a; font-weight:400; font-size:18px;">/ énter-ékis /</span></div>
+        </div>
+        <div style="display:flex; gap:32px; margin-top:24px; font-family:'Geist Mono',monospace; font-size:14px;">
+          <div><div style="font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#8a8a8a; margin-bottom:4px;">Principal</div><span style="color:#d9281a;">enterx.pe</span></div>
+          <div><div style="font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#8a8a8a; margin-bottom:4px;">Global</div>enterx.io</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="lineas" data-screen-label="Líneas de negocio" style="padding:120px 56px; background:#f7f7f7; border-bottom:1px solid #ededed;">
+  <div style="max-width:1120px; margin:0 auto;">
+    <div style="font-family:'Geist Mono',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:24px;"><span style="color:#d9281a;">04</span> &nbsp;<span style="color:#8a8a8a;">Líneas de negocio</span></div>
+    <h2 style="margin:0 0 12px; font-size:clamp(30px,4vw,52px); font-weight:600; line-height:1.05; letter-spacing:-0.025em; color:#0d0d0d;">Tres formas de trabajar juntos</h2>
+    <p style="margin:0 0 56px; font-size:18px; line-height:1.65; color:#6b6b6b; max-width:58ch;">De menor a mayor profundidad. La co-implementación es el corazón de EnterX: ahí es donde la capacidad realmente se queda en la empresa.</p>
+
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+      <div style="background:#ffffff; border:1px solid #e6e6e6; border-radius:18px; padding:34px 32px; display:flex; flex-direction:column;">
+        <div style="font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.14em; color:#bdbdbd; margin-bottom:22px;">01</div>
+        <div style="font-size:24px; font-weight:600; letter-spacing:-0.015em; margin-bottom:24px;">Formación</div>
+        <div style="font-family:'Geist Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#8a8a8a; margin-bottom:8px;">Qué es</div>
+        <p style="margin:0 0 22px; font-size:15.5px; line-height:1.6; color:#3a3a3a;">Programas 100% en vivo donde los equipos aprenden a trabajar con IA y a decidir con criterio propio.</p>
+        <div style="font-family:'Geist Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#8a8a8a; margin-bottom:8px;">Cliente ideal</div>
+        <p style="margin:0; font-size:15.5px; line-height:1.6; color:#3a3a3a;">Empresas que quieren elevar el nivel de sus equipos antes de construir.</p>
+      </div>
+
+      <div style="background:#ffffff; border:1px solid #e6e6e6; border-radius:18px; padding:34px 32px; display:flex; flex-direction:column;">
+        <div style="font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.14em; color:#bdbdbd; margin-bottom:22px;">02</div>
+        <div style="font-size:24px; font-weight:600; letter-spacing:-0.015em; margin-bottom:24px;">Implementación</div>
+        <div style="font-family:'Geist Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#8a8a8a; margin-bottom:8px;">Qué es</div>
+        <p style="margin:0 0 22px; font-size:15.5px; line-height:1.6; color:#3a3a3a;">Construimos la solución de IA que el problema necesita y la dejamos operando en producción.</p>
+        <div style="font-family:'Geist Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#8a8a8a; margin-bottom:8px;">Cliente ideal</div>
+        <p style="margin:0; font-size:15.5px; line-height:1.6; color:#3a3a3a;">Empresas con un problema definido que necesitan ejecución experta.</p>
+      </div>
+
+      <div style="background:#0d0d0d; border:1px solid #0d0d0d; border-radius:18px; padding:34px 32px; display:flex; flex-direction:column; color:#fff; position:relative; box-shadow:0 24px 60px rgba(217,40,26,0.16);">
+        <div style="position:absolute; top:26px; right:28px; font-family:'Geist Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#0d0d0d; background:#d9281a; padding:5px 10px; border-radius:100px;">★ Diferencial</div>
+        <div style="font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.14em; color:#d9281a; margin-bottom:22px;">03</div>
+        <div style="font-size:24px; font-weight:600; letter-spacing:-0.015em; margin-bottom:24px;">Co-implementación</div>
+        <div style="font-family:'Geist Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#8a8a8a; margin-bottom:8px;">Qué es</div>
+        <p style="margin:0 0 22px; font-size:15.5px; line-height:1.6; color:rgba(255,255,255,0.78);">Construimos contigo, no por ti. Tu equipo participa en cada decisión y queda al mando del sistema.</p>
+        <div style="font-family:'Geist Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#8a8a8a; margin-bottom:8px;">Cliente ideal</div>
+        <p style="margin:0; font-size:15.5px; line-height:1.6; color:rgba(255,255,255,0.78);">Empresas que buscan autonomía duradera, no dependencia de un proveedor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="valor" data-screen-label="Propuesta de valor" style="padding:120px 56px; background:#ffffff; border-bottom:1px solid #ededed;">
+  <div style="max-width:1120px; margin:0 auto;">
+    <div style="font-family:'Geist Mono',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:24px;"><span style="color:#d9281a;">05</span> &nbsp;<span style="color:#8a8a8a;">Propuesta de valor</span></div>
+    <h2 style="margin:0 0 56px; font-size:clamp(28px,3.6vw,46px); font-weight:600; line-height:1.12; letter-spacing:-0.025em; color:#0d0d0d; max-width:24ch;">Capacidad instalada. No dependencia. Lo que construimos, tu equipo lo opera.</h2>
+
+    <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#8a8a8a; margin-bottom:24px;">Diferenciadores transversales</div>
+    <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:0; border-top:1px solid #ededed; border-left:1px solid #ededed;">
+      <div style="padding:30px 26px; border-right:1px solid #ededed; border-bottom:1px solid #ededed;">
+        <div style="font-family:'Geist Mono',monospace; font-size:12px; color:#d9281a; margin-bottom:18px;">01</div>
+        <div style="font-size:18px; font-weight:600; letter-spacing:-0.01em; margin-bottom:8px;">Practitioners reales</div>
+        <p style="margin:0; font-size:14px; line-height:1.55; color:#6b6b6b;">Enseña y construye quien lo hace en producción, no quien solo lo explica.</p>
+      </div>
+      <div style="padding:30px 26px; border-right:1px solid #ededed; border-bottom:1px solid #ededed;">
+        <div style="font-family:'Geist Mono',monospace; font-size:12px; color:#d9281a; margin-bottom:18px;">02</div>
+        <div style="font-size:18px; font-weight:600; letter-spacing:-0.01em; margin-bottom:8px;">100% en vivo</div>
+        <p style="margin:0; font-size:14px; line-height:1.55; color:#6b6b6b;">Sesiones reales con interacción, no contenido grabado que nadie termina.</p>
+      </div>
+      <div style="padding:30px 26px; border-right:1px solid #ededed; border-bottom:1px solid #ededed;">
+        <div style="font-family:'Geist Mono',monospace; font-size:12px; color:#d9281a; margin-bottom:18px;">03</div>
+        <div style="font-size:18px; font-weight:600; letter-spacing:-0.01em; margin-bottom:8px;">Estado del arte</div>
+        <p style="margin:0; font-size:14px; line-height:1.55; color:#6b6b6b;">Trabajamos con lo más avanzado que hoy funciona, no con promesas.</p>
+      </div>
+      <div style="padding:30px 26px; border-right:1px solid #ededed; border-bottom:1px solid #ededed;">
+        <div style="font-family:'Geist Mono',monospace; font-size:12px; color:#d9281a; margin-bottom:18px;">04</div>
+        <div style="font-size:18px; font-weight:600; letter-spacing:-0.01em; margin-bottom:8px;">Pensamiento crítico</div>
+        <p style="margin:0; font-size:14px; line-height:1.55; color:#6b6b6b;">Formamos criterio para decidir, no para repetir recetas.</p>
+      </div>
+      <div style="padding:30px 26px; border-right:1px solid #ededed; border-bottom:1px solid #ededed;">
+        <div style="font-family:'Geist Mono',monospace; font-size:12px; color:#d9281a; margin-bottom:18px;">05</div>
+        <div style="font-size:18px; font-weight:600; letter-spacing:-0.01em; margin-bottom:8px;">Respaldo CETEMIN</div>
+        <p style="margin:0; font-size:14px; line-height:1.55; color:#6b6b6b;">Una institución con trayectoria detrás de cada compromiso.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="posicion" data-screen-label="Posicionamiento" style="padding:120px 56px; background:#0d0d0d; color:#fff; border-bottom:1px solid #0d0d0d;">
+  <div style="max-width:1120px; margin:0 auto;">
+    <div style="font-family:'Geist Mono',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:24px;"><span style="color:#d9281a;">06</span> &nbsp;<span style="color:rgba(255,255,255,0.5);">Eje de posicionamiento</span></div>
+    <h2 style="margin:0 0 12px; font-size:clamp(30px,4vw,52px); font-weight:600; line-height:1.05; letter-spacing:-0.025em;">Dónde jugamos</h2>
+    <p style="margin:0 0 64px; font-size:18px; line-height:1.65; color:rgba(255,255,255,0.6); max-width:56ch;">Dos ejes definen el territorio de EnterX: dejamos autonomía (no dependencia) y formamos criterio (no vendemos commodity).</p>
+
+    <div style="position:relative; width:100%; max-width:620px; margin:0 auto; aspect-ratio:1/1;">
+      <div style="position:absolute; inset:0; border:1px solid rgba(255,255,255,0.14); border-radius:14px;"></div>
+      <div style="position:absolute; top:0; bottom:0; left:50%; width:1px; background:rgba(255,255,255,0.1);"></div>
+      <div style="position:absolute; left:0; right:0; top:50%; height:1px; background:rgba(255,255,255,0.1);"></div>
+
+      <div style="position:absolute; top:14px; left:50%; transform:translateX(-50%); font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.55);">Autonomía</div>
+      <div style="position:absolute; bottom:14px; left:50%; transform:translateX(-50%); font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.55);">Dependencia</div>
+      <div style="position:absolute; left:16px; top:50%; transform:translateY(-50%) rotate(-90deg); transform-origin:left center; font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.55);">Commodity</div>
+      <div style="position:absolute; right:-8px; top:50%; transform:translateY(-50%) rotate(90deg); transform-origin:right center; font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.55);">Criterio</div>
+
+      <div style="position:absolute; left:20%; top:24%; transform:translate(-50%,-50%); width:9px; height:9px; border-radius:50%; background:rgba(255,255,255,0.22);"></div>
+      <div style="position:absolute; left:24%; top:74%; transform:translate(-50%,-50%); width:9px; height:9px; border-radius:50%; background:rgba(255,255,255,0.22);"></div>
+      <div style="position:absolute; left:74%; top:78%; transform:translate(-50%,-50%); width:9px; height:9px; border-radius:50%; background:rgba(255,255,255,0.22);"></div>
+
+      <div style="position:absolute; left:74%; top:26%; transform:translate(-50%,-50%); display:flex; flex-direction:column; align-items:center; gap:10px;">
+        <div style="width:18px; height:18px; border-radius:50%; background:#d9281a; box-shadow:0 0 0 6px rgba(217,40,26,0.18), 0 0 30px rgba(217,40,26,0.5);"></div>
+        <span style="font-size:17px; font-weight:600; letter-spacing:-0.01em;">EnterX</span>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:56px; max-width:760px; margin-left:auto; margin-right:auto;">
+      <div style="border-left:2px solid #d9281a; padding-left:18px;"><div style="font-weight:600; margin-bottom:4px;">Autonomía sobre dependencia</div><p style="margin:0; font-size:15px; line-height:1.6; color:rgba(255,255,255,0.6);">El éxito se mide por lo que la empresa puede hacer sin nosotros.</p></div>
+      <div style="border-left:2px solid #d9281a; padding-left:18px;"><div style="font-weight:600; margin-bottom:4px;">Criterio sobre commodity</div><p style="margin:0; font-size:15px; line-height:1.6; color:rgba(255,255,255,0.6);">Entregamos juicio para decidir, no un producto intercambiable.</p></div>
+    </div>
+  </div>
+</section>
+<section id="frameworks" data-screen-label="Frameworks" style="padding:120px 56px; background:#ffffff; border-bottom:1px solid #ededed;">
+  <div style="max-width:1120px; margin:0 auto;">
+    <div style="font-family:'Geist Mono',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:24px;"><span style="color:#d9281a;">07</span> &nbsp;<span style="color:#8a8a8a;">Frameworks propios</span></div>
+    <h2 style="margin:0 0 12px; font-size:clamp(30px,4vw,52px); font-weight:600; line-height:1.05; letter-spacing:-0.025em; color:#0d0d0d;">Los 5 niveles de madurez en IA</h2>
+    <p style="margin:0 0 56px; font-size:18px; line-height:1.65; color:#6b6b6b; max-width:58ch;">Un mapa para saber dónde está una organización y hacia dónde puede subir. El objetivo es el <span style="color:#d9281a; font-weight:600;">Nivel 3</span>: agentes de IA funcionales operando en el negocio.</p>
+
+    <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:14px; align-items:end; margin-bottom:20px;">
+      <div style="display:flex; flex-direction:column; justify-content:flex-end; gap:14px; height:300px;">
+        <div style="background:#f0f0f0; border:1px solid #e6e6e6; border-radius:10px 10px 0 0; height:20%; display:flex; align-items:flex-start; justify-content:center; padding-top:12px; font-family:'Geist Mono',monospace; font-size:13px; color:#9a9a9a;">N1</div>
+      </div>
+      <div style="display:flex; flex-direction:column; justify-content:flex-end; gap:14px; height:300px;">
+        <div style="background:#f0f0f0; border:1px solid #e6e6e6; border-radius:10px 10px 0 0; height:38%; display:flex; align-items:flex-start; justify-content:center; padding-top:12px; font-family:'Geist Mono',monospace; font-size:13px; color:#9a9a9a;">N2</div>
+      </div>
+      <div style="display:flex; flex-direction:column; justify-content:flex-end; gap:14px; height:300px;">
+        <div style="background:#d9281a; border:1px solid #d9281a; border-radius:10px 10px 0 0; height:58%; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; padding-top:12px; color:#fff; box-shadow:0 16px 36px rgba(217,40,26,0.28);"><span style="font-family:'Geist Mono',monospace; font-size:13px;">N3</span><span style="font-family:'Geist Mono',monospace; font-size:9px; letter-spacing:0.14em; text-transform:uppercase; margin-top:6px; opacity:0.85;">Objetivo</span></div>
+      </div>
+      <div style="display:flex; flex-direction:column; justify-content:flex-end; gap:14px; height:300px;">
+        <div style="background:#1a1a1a; border:1px solid #1a1a1a; border-radius:10px 10px 0 0; height:78%; display:flex; align-items:flex-start; justify-content:center; padding-top:12px; font-family:'Geist Mono',monospace; font-size:13px; color:#fff;">N4</div>
+      </div>
+      <div style="display:flex; flex-direction:column; justify-content:flex-end; gap:14px; height:300px;">
+        <div style="background:#1a1a1a; border:1px solid #1a1a1a; border-radius:10px 10px 0 0; height:100%; display:flex; align-items:flex-start; justify-content:center; padding-top:12px; font-family:'Geist Mono',monospace; font-size:13px; color:#fff;">N5</div>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:14px; border-top:1px solid #ededed; padding-top:18px;">
+      <div><div style="font-size:15px; font-weight:600; margin-bottom:4px;">Prompts básicos</div><p style="margin:0; font-size:13px; line-height:1.5; color:#6b6b6b;">Uso suelto, sin método ni estándar.</p></div>
+      <div><div style="font-size:15px; font-weight:600; margin-bottom:4px;">Automatizaciones simples</div><p style="margin:0; font-size:13px; line-height:1.5; color:#6b6b6b;">Tareas puntuales automatizadas.</p></div>
+      <div><div style="font-size:15px; font-weight:600; color:#d9281a; margin-bottom:4px;">Agentes IA funcionales</div><p style="margin:0; font-size:13px; line-height:1.5; color:#6b6b6b;">Agentes que ejecutan trabajo real.</p></div>
+      <div><div style="font-size:15px; font-weight:600; margin-bottom:4px;">Sistemas orquestados</div><p style="margin:0; font-size:13px; line-height:1.5; color:#6b6b6b;">Varios agentes coordinados entre sí.</p></div>
+      <div><div style="font-size:15px; font-weight:600; margin-bottom:4px;">Agentes auto-evolutivos</div><p style="margin:0; font-size:13px; line-height:1.5; color:#6b6b6b;">Sistemas que aprenden y mejoran solos.</p></div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin:48px 0 80px;">
+      <div style="background:#f7f7f7; border:1px solid #ededed; border-radius:16px; padding:34px 36px; display:flex; align-items:baseline; gap:20px;">
+        <div style="font-size:clamp(44px,6vw,68px); font-weight:600; letter-spacing:-0.03em; color:#0d0d0d; line-height:1;">~80<span style="font-size:0.5em; color:#d9281a;">%</span></div>
+        <p style="margin:0; font-size:15px; line-height:1.55; color:#6b6b6b;">del mercado sigue en <b style="color:#0d0d0d; font-weight:600;">Nivel 1</b>. La IA existe, pero no produce.</p>
+      </div>
+      <div style="background:#f7f7f7; border:1px solid #ededed; border-radius:16px; padding:34px 36px; display:flex; align-items:baseline; gap:20px;">
+        <div style="font-size:clamp(44px,6vw,68px); font-weight:600; letter-spacing:-0.03em; color:#0d0d0d; line-height:1;">~5<span style="font-size:0.5em; color:#d9281a;">%</span></div>
+        <p style="margin:0; font-size:15px; line-height:1.55; color:#6b6b6b;">genera valor real, en <b style="color:#0d0d0d; font-weight:600;">Nivel 3 o más</b>. Ahí empieza el resultado — y ahí entramos.</p>
+      </div>
+    </div>
+    <div style="border:1px solid #ededed; border-radius:16px; background:#f7f7f7; padding:28px 36px; margin:0 0 80px; display:flex; align-items:center; gap:18px;">
+      <span style="width:8px; height:8px; border-radius:50%; background:#d9281a; flex-shrink:0;"></span>
+      <p style="margin:0; font-size:clamp(17px,2vw,22px); font-weight:500; letter-spacing:-0.01em; line-height:1.4; color:#0d0d0d;">El salto del Nivel 1 al 3 no son las herramientas: es el <span style="color:#d9281a;">pensamiento crítico</span>.</p>
+    </div>
+
+    <h3 style="margin:0 0 8px; font-size:clamp(24px,2.6vw,34px); font-weight:600; letter-spacing:-0.02em;">Las 3 decisiones críticas</h3>
+    <p style="margin:0 0 36px; font-size:17px; line-height:1.6; color:#6b6b6b; max-width:56ch;">Antes de construir, toda transformación con IA responde tres preguntas. Acompañamos las tres.</p>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+      <div style="border-top:2px solid #d9281a; padding-top:22px;">
+        <div style="font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.12em; color:#bdbdbd; margin-bottom:14px;">01 · PROBLEMA</div>
+        <div style="font-size:20px; font-weight:600; letter-spacing:-0.01em; margin-bottom:8px;">¿Qué problema resolver?</div>
+        <p style="margin:0; font-size:15px; line-height:1.6; color:#6b6b6b;">Verbo + unidad + umbral + tiempo. Sin umbral no hay decisión; sin decisión, no hay ROI.</p>
+      </div>
+      <div style="border-top:2px solid #d9281a; padding-top:22px;">
+        <div style="font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.12em; color:#bdbdbd; margin-bottom:14px;">02 · INFRAESTRUCTURA</div>
+        <div style="font-size:20px; font-weight:600; letter-spacing:-0.01em; margin-bottom:8px;">¿Dónde corre?</div>
+        <p style="margin:0; font-size:15px; line-height:1.6; color:#6b6b6b;">Arquitectura, datos, modelos y herramientas adecuadas al contexto.</p>
+      </div>
+      <div style="border-top:2px solid #d9281a; padding-top:22px;">
+        <div style="font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.12em; color:#bdbdbd; margin-bottom:14px;">03 · GOBIERNO</div>
+        <div style="font-size:20px; font-weight:600; letter-spacing:-0.01em; margin-bottom:8px;">¿Cómo se gobierna?</div>
+        <p style="margin:0; font-size:15px; line-height:1.6; color:#6b6b6b;">Seguridad, ética, trazabilidad y métricas. La IA sin gobernanza no es sostenible.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="voz" data-screen-label="Voz y tono" style="padding:120px 56px; background:#f7f7f7; border-bottom:1px solid #ededed;">
+  <div style="max-width:1120px; margin:0 auto;">
+    <div style="font-family:'Geist Mono',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:24px;"><span style="color:#d9281a;">08</span> &nbsp;<span style="color:#8a8a8a;">Voz y tono</span></div>
+    <h2 style="margin:0 0 12px; font-size:clamp(30px,4vw,52px); font-weight:600; line-height:1.05; letter-spacing:-0.025em; color:#0d0d0d;">Cómo conversa EnterX</h2>
+    <p style="margin:0 0 56px; font-size:18px; line-height:1.65; color:#6b6b6b; max-width:60ch;">Sobrio, seguro, sin marketingese. Afirmamos lo que construimos, nunca lo que al cliente le falta. La autoridad viene de la práctica, no de los superlativos.</p>
+
+    <div style="background:#0d0d0d; color:#fff; border-radius:18px; padding:44px 48px; margin-bottom:48px; display:grid; grid-template-columns:auto 1fr; gap:36px; align-items:center;">
+      <div style="font-size:clamp(56px,8vw,104px); font-weight:600; letter-spacing:-0.03em; color:#d9281a; line-height:1;">70%</div>
+      <div>
+        <div style="font-size:22px; font-weight:600; letter-spacing:-0.01em; margin-bottom:8px;">En discovery no se vende, se entiende.</div>
+        <p style="margin:0; font-size:16px; line-height:1.6; color:rgba(255,255,255,0.62); max-width:54ch;">El cliente habla el 70% del tiempo. Nuestra primera tarea es escuchar y comprender el problema antes de proponer nada.</p>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:48px;">
+      <div style="background:#ffffff; border:1px solid #e6e6e6; border-radius:16px; padding:32px 34px;">
+        <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#1f8a5b; margin-bottom:18px;">✓ Hacemos</div>
+        <div style="display:flex; flex-direction:column; gap:12px; font-size:15.5px; line-height:1.5; color:#3a3a3a;">
+          <div>Escuchar y diagnosticar antes de proponer.</div>
+          <div>Hablar con concreción y ejemplos reales.</div>
+          <div>Afirmar lo que podemos construir y acompañar.</div>
+          <div>Mostrar criterio; explicar el porqué de cada decisión.</div>
+        </div>
+      </div>
+      <div style="background:#ffffff; border:1px solid #e6e6e6; border-radius:16px; padding:32px 34px;">
+        <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#d9281a; margin-bottom:18px;">✕ Evitamos</div>
+        <div style="display:flex; flex-direction:column; gap:12px; font-size:15.5px; line-height:1.5; color:#3a3a3a;">
+          <div>Señalar carencias o lo que al cliente «le falta».</div>
+          <div>Vender en la primera conversación.</div>
+          <div>Superlativos vacíos y jerga de moda.</div>
+          <div>Promesas que no podemos sostener con práctica.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#ffffff; border:1px solid #e6e6e6; border-radius:18px; overflow:hidden;">
+      <div style="padding:24px 34px; border-bottom:1px solid #ededed; font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#8a8a8a;">La regla clave · Nunca afirmar carencia</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr;">
+        <div style="padding:30px 34px; border-right:1px solid #ededed;">
+          <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#d9281a; margin-bottom:14px;">No decimos</div>
+          <p style="margin:0 0 12px; font-size:17px; line-height:1.5; color:#9a9a9a; text-decoration:line-through; text-decoration-color:rgba(217,40,26,0.5);">«A su empresa le falta una estrategia de IA.»</p>
+          <p style="margin:0; font-size:17px; line-height:1.5; color:#9a9a9a; text-decoration:line-through; text-decoration-color:rgba(217,40,26,0.5);">«Están atrasados frente a la competencia.»</p>
+        </div>
+        <div style="padding:30px 34px;">
+          <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#1f8a5b; margin-bottom:14px;">Decimos</div>
+          <p style="margin:0 0 12px; font-size:17px; line-height:1.5; color:#0d0d0d;">«Podemos construir esa capacidad con su equipo.»</p>
+          <p style="margin:0; font-size:17px; line-height:1.5; color:#0d0d0d;">«Podemos evolucionar lo que ya tienen y acompañar el salto.»</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="reglas" data-screen-label="Reglas de marca" style="padding:120px 56px; background:#ffffff; border-bottom:1px solid #ededed;">
+  <div style="max-width:1120px; margin:0 auto;">
+    <div style="font-family:'Geist Mono',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:24px;"><span style="color:#d9281a;">09</span> &nbsp;<span style="color:#8a8a8a;">Reglas de marca</span></div>
+    <h2 style="margin:0 0 56px; font-size:clamp(30px,4vw,52px); font-weight:600; line-height:1.05; letter-spacing:-0.025em; color:#0d0d0d;">El sistema, en corto</h2>
+
+    <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#8a8a8a; margin-bottom:20px;">Paleta — un solo acento</div>
+    <div style="display:grid; grid-template-columns:repeat(6,1fr); gap:14px; margin-bottom:24px;">
+      <div><div style="height:96px; background:#ffffff; border:1px solid #e6e6e6; border-radius:12px;"></div><div style="font-family:'Geist Mono',monospace; font-size:12px; margin-top:10px;">#FFFFFF</div><div style="font-size:12px; color:#8a8a8a;">Fondo base</div></div>
+      <div><div style="height:96px; background:#ededed; border:1px solid #e6e6e6; border-radius:12px;"></div><div style="font-family:'Geist Mono',monospace; font-size:12px; margin-top:10px;">#EDEDED</div><div style="font-size:12px; color:#8a8a8a;">Superficie</div></div>
+      <div><div style="height:96px; background:#e6e6e6; border:1px solid #dcdcdc; border-radius:12px;"></div><div style="font-family:'Geist Mono',monospace; font-size:12px; margin-top:10px;">#E6E6E6</div><div style="font-size:12px; color:#8a8a8a;">Borde</div></div>
+      <div><div style="height:96px; background:#1a1a1a; border-radius:12px;"></div><div style="font-family:'Geist Mono',monospace; font-size:12px; margin-top:10px;">#1A1A1A</div><div style="font-size:12px; color:#8a8a8a;">Texto / oscuro</div></div>
+      <div><div style="height:96px; background:#0d0d0d; border-radius:12px;"></div><div style="font-family:'Geist Mono',monospace; font-size:12px; margin-top:10px;">#0D0D0D</div><div style="font-size:12px; color:#8a8a8a;">Negro base</div></div>
+      <div><div style="height:96px; background:#d9281a; border-radius:12px; box-shadow:0 10px 24px rgba(217,40,26,0.25);"></div><div style="font-family:'Geist Mono',monospace; font-size:12px; margin-top:10px; color:#d9281a;">#D9281A</div><div style="font-size:12px; color:#8a8a8a;">Acento único</div></div>
+    </div>
+    <p style="margin:0 0 56px; font-size:15px; line-height:1.6; color:#6b6b6b; max-width:64ch;"><b style="color:#0d0d0d; font-weight:600;">#D9281A es el único acento de marca.</b> Se usa con moderación: para enfatizar, nunca para rellenar. El resto es blanco, negro y un gris neutro de apoyo. Sin degradados, sin colores adicionales.</p>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:24px;">
+      <div style="border:1px solid #e6e6e6; border-radius:16px; overflow:hidden;">
+        <div style="background:#0d0d0d; padding:40px; display:flex; align-items:center; justify-content:center;"><img src="assets/logo_enterx.png" alt="Logo EnterX" style="height:34px; width:auto;" /></div>
+        <div style="padding:20px 24px; display:flex; align-items:center; gap:10px;"><span style="color:#1f8a5b; font-weight:600;">✓</span><span style="font-size:14.5px; color:#3a3a3a;">El logo completo vive sobre fondos oscuros.</span></div>
+      </div>
+      <div style="border:1px solid #e6e6e6; border-radius:16px; overflow:hidden;">
+        <div style="background:#ffffff; padding:30px; display:flex; align-items:center; justify-content:center; border-bottom:1px solid #ededed;"><img src="assets/isotipo_enterx.png" alt="Isótopo EnterX" style="height:64px; width:auto;" /></div>
+        <div style="padding:20px 24px; display:flex; align-items:center; gap:10px;"><span style="color:#1f8a5b; font-weight:600;">✓</span><span style="font-size:14.5px; color:#3a3a3a;">El isótopo funciona en claro u oscuro, como sello.</span></div>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+      <div style="background:#f7f7f7; border:1px solid #ededed; border-radius:16px; padding:34px 36px;">
+        <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#8a8a8a; margin-bottom:16px;">CETEMIN</div>
+        <div style="font-size:19px; font-weight:600; letter-spacing:-0.01em; margin-bottom:8px;">Respaldo presente en credibilidad</div>
+        <p style="margin:0; font-size:15px; line-height:1.6; color:#6b6b6b;">CETEMIN aparece en materiales donde la confianza importa — propuestas, credenciales y cierres. No en cada pieza, solo donde suma autoridad.</p>
+      </div>
+      <div style="background:#f7f7f7; border:1px solid #ededed; border-radius:16px; padding:34px 36px;">
+        <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#8a8a8a; margin-bottom:16px;">Naming de assets</div>
+        <div style="font-size:19px; font-weight:600; letter-spacing:-0.01em; margin-bottom:14px;">Convención de archivos</div>
+        <div style="font-family:'Geist Mono',monospace; font-size:15px; background:#0d0d0d; color:#fff; border-radius:10px; padding:14px 16px; margin-bottom:10px;">nombre<span style="color:#d9281a;">_v2_20260610</span></div>
+        <p style="margin:0; font-size:14px; line-height:1.55; color:#6b6b6b;">Sufijo <b style="color:#0d0d0d; font-weight:600;">_vN_YYYYMMDD</b> en cada entregable, para versión y fecha trazables.</p>
+      </div>
+    </div>
+
+    <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#8a8a8a; margin:56px 0 20px;">Las dos piezas</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+      <div style="border:1px solid #e6e6e6; border-radius:16px; padding:34px 36px; display:flex; gap:20px; align-items:flex-start;">
+        <div style="font-family:'Geist Mono',monospace; font-size:12px; color:#d9281a; padding-top:4px;">A</div>
+        <div><div style="font-size:20px; font-weight:600; letter-spacing:-0.01em; margin-bottom:6px;">Web shareable</div><p style="margin:0; font-size:15px; line-height:1.6; color:#6b6b6b;">Documento digital navegable — como éste. Para compartir la identidad y la propuesta de forma abierta.</p></div>
+      </div>
+      <div style="border:1px solid #e6e6e6; border-radius:16px; padding:34px 36px; display:flex; gap:20px; align-items:flex-start;">
+        <div style="font-family:'Geist Mono',monospace; font-size:12px; color:#d9281a; padding-top:4px;">B</div>
+        <div><div style="font-size:20px; font-weight:600; letter-spacing:-0.01em; margin-bottom:6px;">Discovery brochure</div><p style="margin:0; font-size:15px; line-height:1.6; color:#6b6b6b;">Pieza para la conversación de discovery. Apoya el entender, no el vender.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="moodboard" data-screen-label="Moodboard" style="padding:120px 56px; background:#0d0d0d; color:#fff; border-bottom:1px solid #0d0d0d;">
+  <div style="max-width:1180px; margin:0 auto;">
+    <div style="font-family:'Geist Mono',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:24px;"><span style="color:#d9281a;">10</span> &nbsp;<span style="color:rgba(255,255,255,0.5);">Moodboard y aplicaciones</span></div>
+    <h2 style="margin:0 0 12px; font-size:clamp(30px,4vw,52px); font-weight:600; line-height:1.05; letter-spacing:-0.025em;">La identidad, en producto</h2>
+    <p style="margin:0 0 48px; font-size:18px; line-height:1.65; color:rgba(255,255,255,0.6); max-width:60ch;">Este manual existe para construir. Negro de base, metal y un solo rojo: así se ve EnterX aplicado — del sitio web a la papelería, las tarjetas y el merchandising.</p>
+    <div style="border:1px solid rgba(255,255,255,0.12); border-radius:18px; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.5);">
+      <img src="assets/moodboard_enterx.png" alt="Moodboard de aplicaciones de marca EnterX" style="width:100%; height:auto; display:block;" />
+    </div>
+    <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:28px; font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.08em; color:rgba(255,255,255,0.55);">
+      <span style="border:1px solid rgba(255,255,255,0.16); border-radius:100px; padding:7px 14px;">Web</span>
+      <span style="border:1px solid rgba(255,255,255,0.16); border-radius:100px; padding:7px 14px;">Tarjetas</span>
+      <span style="border:1px solid rgba(255,255,255,0.16); border-radius:100px; padding:7px 14px;">Lanyard</span>
+      <span style="border:1px solid rgba(255,255,255,0.16); border-radius:100px; padding:7px 14px;">Mug</span>
+      <span style="border:1px solid rgba(255,255,255,0.16); border-radius:100px; padding:7px 14px;">Libreta</span>
+      <span style="border:1px solid rgba(255,255,255,0.16); border-radius:100px; padding:7px 14px;">Lapicero</span>
+    </div>
+  </div>
+</section>
+
+<section id="cierre" data-screen-label="Cierre" style="position:relative; min-height:92vh; background:#0d0d0d; color:#fff; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:80px 56px; overflow:hidden;">
+  <div style="position:absolute; inset:0; background:radial-gradient(55% 50% at 50% 50%, rgba(217,40,26,0.10), transparent 70%); pointer-events:none;"></div>
+  <img src="assets/isotipo_enterx.png" alt="Isótopo EnterX" style="position:relative; width:96px; height:auto; margin-bottom:48px; opacity:0.95;" />
+  <div style="position:relative; font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.22em; text-transform:uppercase; color:#d9281a; margin-bottom:32px;">La idea central</div>
+  <h2 style="position:relative; margin:0; font-size:clamp(34px,6vw,80px); font-weight:600; line-height:1.04; letter-spacing:-0.035em; max-width:18ch;">No dejamos a las empresas dependientes de nosotros. <span style="color:#d9281a;">Las dejamos capaces.</span></h2>
+  <div style="position:relative; display:flex; gap:36px; margin-top:64px; font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.45);">
+    <span>EnterX</span><span style="color:rgba(255,255,255,0.25);">·</span><span>enterx.pe</span><span style="color:rgba(255,255,255,0.25);">·</span><span>Manual de Marca v1 · 2026</span>
+  </div>
+</section></x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount(){
+    try {
+      const links = Array.from(document.querySelectorAll('[data-navlink]'));
+      const map = {};
+      links.forEach(l => { map[l.getAttribute('data-navlink')] = l; });
+      const setActive = (id) => {
+        links.forEach(l => { l.style.color = 'rgba(255,255,255,0.5)'; });
+        if (map[id]) map[id].style.color = '#ffffff';
+      };
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting && map[e.target.id]) setActive(e.target.id); });
+      }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+      document.querySelectorAll('section[id]').forEach(s => obs.observe(s));
+    } catch(e) {}
+  }
+  renderVals(){ return {}; }
+}
+</script>
+</body>
+</html>
