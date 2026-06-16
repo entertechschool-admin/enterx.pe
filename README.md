@@ -1,7 +1,7 @@
 # enterx.pe
 
 Sitio web público de **EnterX** — la unidad de IA aplicada B2B de Enter Tech School (respaldo CETEMIN).
-Construido con Next.js + Tailwind.
+Construido con Next.js + Tailwind CSS.
 
 ## Para el agente implementador
 
