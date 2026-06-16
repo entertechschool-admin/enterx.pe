@@ -71,6 +71,24 @@ CETEMIN). Tu rol aquí: **implementar el sitio** según la spec, fiel a la marca
 Next.js (App Router) + TypeScript + Tailwind. Fuentes vía `next/font`. Assets de marca en
 `brand/assets/` → copiar a `public/`. Deploy en Vercel → dominio `enterx.pe`.
 
+## Notas de stack (verificado en Fase 1 — no re-investigar)
+
+- **Next 16.2.9** (App Router, Turbopack por defecto) + **React 19.2.7** + **Tailwind v3.4.17**
+  (v3 elegido sobre v4 por estabilidad de config TS). En el primer `next build`, Next reescribe
+  `tsconfig.json` (`jsx → react-jsx`, añade types dir) — **es esperado, no revertir**.
+- **Fuentes: usar el paquete `geist`**, NO `next/font/google` (Geist/Geist_Mono **no** están
+  expuestos ahí en Next 16). `import { GeistSans } from "geist/font/sans"` + `GeistMono` de
+  `geist/font/mono`; exponen vars **`--font-geist-sans`** y **`--font-geist-mono`** (las consume
+  `fontFamily` en `tailwind.config.ts`). Auto-hosteadas, **sin CDN externo** (verificado).
+- **Contacto YA cableado:** WhatsApp **+51 964 401 918** centralizado en `lib/site.ts`
+  (`buildWhatsappUrl()` / `WHATSAPP_URL`). El sitio **ya puede publicarse** — el CTA no es placeholder.
+- **Copy y config centralizados:** todo el texto en `lib/content.ts` (literal de CONTEXT, tipado);
+  dominios/metadata/JSON-LD en `lib/site.ts`. No hardcodear copy en JSX.
+- **Dev server (operativo):** Next aborta si ya hay otro `next dev` en el mismo directorio (baila de
+  puerto y luego muere). Antes de arrancar dev, `pkill -f "next dev"` y usa puerto fijo
+  (`PORT=3005 npm run dev`); verifica con `curl -s localhost:3005 -o /dev/null -w "%{http_code}"`
+  **antes** de abrir el navegador. La extensión de Chrome puede requerir autorizar el puerto.
+
 ## Estructura del repo
 
 ```
