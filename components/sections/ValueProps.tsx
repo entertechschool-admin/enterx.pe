@@ -16,13 +16,13 @@ export function ValueProps() {
     <section id="servicios" className="bg-surface text-ink">
       <Container className="py-20 md:py-section">
         <Reveal>
-          <SectionHeader number="02" label="Servicios" />
+          <SectionHeader label="Servicios" />
           <h2 className="mt-6 max-w-2xl text-h2 text-balance">{value.lead}</h2>
         </Reveal>
 
         <div className="mt-14 grid gap-5 md:grid-cols-3">
           {value.cards.map((card, i) => (
-            <Reveal key={card.number} delay={i * 110} className="flex">
+            <Reveal key={i} delay={i * 110} className="flex">
               <ValueCard card={card} />
             </Reveal>
           ))}
@@ -44,9 +44,6 @@ function ValueCard({ card }: { card: ValueCardType }) {
         motion-reduce:transition-none md:p-8
       "
     >
-      <span className="font-mono text-sectionnum text-label transition-colors duration-300 group-hover:text-accent">
-        {card.number}
-      </span>
 
       <span className="mt-6 text-ink/55 transition-colors duration-300 group-hover:text-accent">
         <ValueIcon name={card.icon} />

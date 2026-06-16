@@ -43,15 +43,15 @@ export default function Deck() {
     deck.initialize().then(() => {
       // En el primer frame el contenedor ya tiene su altura del CSS; recalcular
       // layout evita que reveal quede clavado en minScale (slides diminutos).
-      // Además re-navegamos a la slide actual (deck.slide(...)) para que reveal
-      // re-aplique los estados present/past/future — sin esto, al cargar con
-      // height fijo en las section, varias slides adyacentes quedan visibles
-      // apiladas hasta el primer resize. (Evitamos deck.sync(): en reveal 6
-      // lanza al iterar estructuras aún no pobladas justo tras initialize.)
+      // Disparar 'resize' fuerza el camino interno estable de reveal
+      // (onWindowResize → layout + re-sync de estados present/past/future), que
+      // corrige el apilamiento inicial — sin esto, con height fijo en las
+      // section, varias slides adyacentes quedan visibles apiladas hasta el
+      // primer resize manual. (deck.sync()/deck.slide() lanzan justo tras
+      // initialize en reveal 6 porque iteran estructuras aún no pobladas.)
       requestAnimationFrame(() => {
         deck.layout();
-        const { h, v, f } = deck.getIndices();
-        deck.slide(h, v, f);
+        window.dispatchEvent(new Event("resize"));
       });
     });
 

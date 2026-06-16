@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { timeline, timelineNote, type TimelineLevel } from "@/lib/content";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -26,7 +27,7 @@ export function Timeline() {
     <section id="la-brecha" className="bg-surface-50 text-ink">
       <Container className="py-20 md:py-section">
         <Reveal>
-          <SectionHeader number="01" label="La brecha" />
+          <SectionHeader label="La brecha" />
           <h2 className="mt-6 max-w-2xl text-h2">
             De preguntarle a la IA a{" "}
             <span className="text-accent">delegarle el trabajo</span>.
@@ -89,25 +90,33 @@ function TimelineNode({
         onFocus={onOpen}
         className="group block w-full text-left focus-visible:outline-none"
       >
-        {/* Nodo (círculo) */}
-        <span
-          aria-hidden
-          className={`
-            absolute left-0 top-1 z-10 flex h-[20px] w-[20px] items-center
-            justify-center rounded-full transition-shadow md:left-3 md:top-0
-            ${
-              level.target
-                ? "bg-accent shadow-accent-glow"
-                : "border border-line bg-surface group-hover:border-muted"
-            }
-          `}
-        >
+        {/* Nodo: esfera roja real para el objetivo (N3); círculo para el resto. */}
+        {level.target ? (
           <span
-            className={`block h-1.5 w-1.5 rounded-full ${
-              level.target ? "bg-white" : "bg-label"
-            }`}
-          />
-        </span>
+            aria-hidden
+            className="absolute left-[-5px] top-[-4px] z-10 md:left-1 md:top-[-6px]"
+          >
+            <span className="absolute inset-0 rounded-full bg-accent/30 blur-md" />
+            <Image
+              src="/ball_red.png"
+              alt=""
+              width={30}
+              height={30}
+              className="relative drop-shadow-[0_2px_10px_rgba(217,40,26,0.45)] contrast-150"
+            />
+          </span>
+        ) : (
+          <span
+            aria-hidden
+            className="
+              absolute left-0 top-1 z-10 flex h-[20px] w-[20px] items-center
+              justify-center rounded-full border border-line bg-surface
+              transition-colors group-hover:border-muted md:left-3 md:top-0
+            "
+          >
+            <span className="block h-1.5 w-1.5 rounded-full bg-label" />
+          </span>
+        )}
 
         {/* Encabezado del nodo */}
         <span className="flex items-center gap-2 md:mt-8">

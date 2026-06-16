@@ -94,7 +94,6 @@ export const timelineNote =
 export type ValueIconKey = "formacion" | "implementacion" | "coimplementacion";
 
 export type ValueCard = {
-  number: string; // 01..03
   title: string;
   whatIs: string;
   idealClient: string;
@@ -106,7 +105,6 @@ export const value = {
   lead: "Capacidad instalada. No dependencia. Lo que construimos, tu equipo lo opera.",
   cards: [
     {
-      number: "01",
       title: "Formación",
       whatIs:
         "Programas 100% en vivo donde los equipos aprenden a trabajar con IA y a decidir con criterio propio.",
@@ -115,7 +113,6 @@ export const value = {
       icon: "formacion",
     },
     {
-      number: "02",
       title: "Implementación",
       whatIs:
         "Construimos la solución de IA que el problema necesita y la dejamos operando en producción.",
@@ -124,7 +121,6 @@ export const value = {
       icon: "implementacion",
     },
     {
-      number: "03",
       title: "Co-implementación",
       whatIs:
         "Construimos contigo, no por ti. Tu equipo participa en cada decisión y queda al mando del sistema.",
