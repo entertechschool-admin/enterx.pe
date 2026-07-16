@@ -3,6 +3,14 @@
 Sitio web público de **EnterX**, la unidad de IA aplicada B2B de Enter Tech School (respaldo
 CETEMIN). Tu rol aquí: **implementar el sitio** según la spec, fiel a la marca, sin inventar negocio.
 
+## Roles
+
+- **Bruno (default):** este documento aplica tal cual.
+- **Ariana:** si existe un `CLAUDE.local.md` en la raíz que importa `.claude/ARIANA.md`, ese
+  contrato manda en la **forma de comunicar** (traducción, sin jerga, protocolo de
+  interpretación). Los guardrails de marca y calidad de este documento aplican **siempre**,
+  para ambos roles.
+
 ## Arranque obligatorio — lee esto primero, en orden
 
 1. **`SPEC.md`** — *qué* construir: alcance, secciones, stack, definición de terminado.
@@ -88,6 +96,26 @@ Next.js (App Router) + TypeScript + Tailwind. Fuentes vía `next/font`. Assets d
   puerto y luego muere). Antes de arrancar dev, `pkill -f "next dev"` y usa puerto fijo
   (`PORT=3005 npm run dev`); verifica con `curl -s localhost:3005 -o /dev/null -w "%{http_code}"`
   **antes** de abrir el navegador. La extensión de Chrome puede requerir autorizar el puerto.
+- **Video del hero (fondo NEGRO, sin alfa — no tocar a ciegas):** el isótopo se anima con dos
+  assets recortados a **432×462** (crop del master `brand/assets/enterx_motion_original.mov`,
+  HEVC 1080×1440): `public/enterx_motion_original.webm` (VP9 `yuv420p`, Chrome/Firefox/Edge) y
+  `public/enterx_motion_original.mov` (HEVC tag `hvc1`, `yuv420p`; encodeado con
+  `hevc_videotoolbox`). **Ambos traen fondo negro puro, NO canal alfa.** Se probó una variante
+  con canal alfa (keying *unmult* → `enterx_motion_alpha.*`) y se **descartó**: el ruido de
+  compresión del clip se hace visible sobre los rojos ambiente; sobre negro plano queda limpio.
+  Por eso la zona del isótopo va a **negro total #000** (ver siguiente punto).
+- **Selección de fuente en `HeroLogoVideo.tsx` (load-bearing, por COMPATIBILIDAD de códec):**
+  stack Apple → `.mov` (probe `video/quicktime; codecs="hvc1"`), resto → `.webm` (VP9). El `.mov`
+  es contenedor **quicktime**: solo lo reproduce el stack Apple. NUNCA uses MIME `video/mp4` ni el
+  codec-string HEVC completo tipo `hvc1.1.6.L120.B0` para enrutar el `.mov`: un Chromium con HEVC
+  por hardware lo elegiría y **no puede** reproducir quicktime → caería al PNG. QA: el wrapper
+  expone `data-phase` (`idle/arming/playing/paused/resting/settled/still`); reproduce una vez y
+  congela en el último frame, con la sombra roja encendiéndose una sola vez (`settle-shadow`).
+- **Fondo negro tras el isótopo (por qué):** el video de fondo negro se integra sin costura porque
+  la zona del clip va a **#000 puro**, no al `#0D0D0D` de la sección. Eso lo dan dos capas en
+  `tailwind.config.ts` + `Hero.tsx`: el gradiente responsive del hero (`hero-stage` desktop /
+  `hero-stage-mobile` mobile — negro donde va el isótopo, guinda `#3a130d` tras el texto) y el div
+  `bg-stage-black` detrás del clip. Al tocar cualquiera, mantén negro puro bajo el video.
 
 ## Estructura del repo
 

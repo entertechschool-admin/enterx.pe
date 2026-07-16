@@ -1,0 +1,6 @@
+Licencia: MIT (declarada en el frontmatter de SKILL.md, `license: MIT`)
+
+Fuente: https://github.com/vercel-labs/agent-skills (carpeta skills/composition-patterns)
+
+El repositorio de origen no incluye un archivo LICENSE individual por skill; declara la
+licencia MIT en su README.md a nivel de repositorio. Este archivo preserva esa referencia.
