@@ -37,3 +37,7 @@ next-env.d.ts
 
 # editor
 .idea/
+
+# claude code — activador de rol local (solo vive en la laptop de cada quien)
+CLAUDE.local.md
+.claude/settings.local.json

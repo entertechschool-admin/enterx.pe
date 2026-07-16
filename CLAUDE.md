@@ -3,6 +3,14 @@
 Sitio web público de **EnterX**, la unidad de IA aplicada B2B de Enter Tech School (respaldo
 CETEMIN). Tu rol aquí: **implementar el sitio** según la spec, fiel a la marca, sin inventar negocio.
 
+## Roles
+
+- **Bruno (default):** este documento aplica tal cual.
+- **Ariana:** si existe un `CLAUDE.local.md` en la raíz que importa `.claude/ARIANA.md`, ese
+  contrato manda en la **forma de comunicar** (traducción, sin jerga, protocolo de
+  interpretación). Los guardrails de marca y calidad de este documento aplican **siempre**,
+  para ambos roles.
+
 ## Arranque obligatorio — lee esto primero, en orden
 
 1. **`SPEC.md`** — *qué* construir: alcance, secciones, stack, definición de terminado.
