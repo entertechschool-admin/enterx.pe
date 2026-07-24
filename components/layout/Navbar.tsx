@@ -6,7 +6,17 @@ import { nav } from "@/lib/content";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 
 /**
- * Navbar sticky sobre fondo oscuro.
+ * Navbar "liquid glass": una píldora flotante, separada del borde superior, con
+ * las puntas redondeadas, vidrio esmerilado (translúcido + backdrop-blur) y un
+ * filo de luz arriba. Flota sobre la web; el contenido pasa desenfocado por
+ * detrás.
+ *
+ * Vidrio OSCURO a propósito: el sitio alterna secciones claras (tarjeta de
+ * Clientes) y oscuras. Un tinte oscuro bajo el blur mantiene el texto blanco
+ * legible sobre cualquiera de las dos — un vidrio claro se lavaría sobre lo
+ * claro. El `scroll-margin-top` de las anclas (globals.css) se subió para que
+ * las secciones no queden bajo la píldora al saltar desde el menú.
+ *
  * - nav-active: resalta el ancla de la sección visible (IntersectionObserver).
  * - menú mobile: drawer accesible (aria-expanded, foco atrapado, cierra con Esc).
  */
@@ -36,11 +46,22 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 h-nav border-b border-white/10 bg-ink/80 backdrop-blur-nav">
+    <header className="fixed inset-x-0 top-4 z-50 flex justify-center px-4">
       <nav
         aria-label="Principal"
-        className="mx-auto flex h-full max-w-container items-center justify-between px-6 md:px-section-x"
+        className="
+          relative flex w-full max-w-4xl items-center justify-between gap-4
+          rounded-pill border border-white/15 bg-ink/40 py-2 pl-6 pr-2
+          shadow-[0_10px_40px_-8px_rgba(0,0,0,0.6)]
+          backdrop-blur-xl backdrop-saturate-150
+        "
       >
+        {/* Filo de luz superior: el reflejo que hace leer el vidrio. */}
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent"
+        />
+
         <a href="#top" className="flex items-center" aria-label="EnterX — inicio">
           <Image
             src="/logo_claro.png"

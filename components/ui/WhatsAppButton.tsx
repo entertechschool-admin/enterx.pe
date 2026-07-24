@@ -1,4 +1,4 @@
-import { WHATSAPP_URL } from "@/lib/site";
+import { WHATSAPP_URL, buildWhatsappUrl } from "@/lib/site";
 
 type Variant = "primary" | "ghost" | "nav";
 
@@ -8,20 +8,34 @@ type WhatsAppButtonProps = {
   className?: string;
   /** Marca el CTA como el principal de la página para lectores de pantalla. */
   ariaLabel?: string;
+  /**
+   * Mensaje pre-cargado propio. Sin esto va el de lib/site.ts. Sirve para que
+   * dos CTA distintos lleguen a WhatsApp diciendo cosas distintas — así se
+   * sabe qué botón trajo a cada quien.
+   */
+  message?: string;
+  /**
+   * Oculta el glifo de WhatsApp. Los dos CTA del hero lo piden: son botones de
+   * intención ("Agendar…", "Quiero información") y el icono de WhatsApp los
+   * ataba a un canal. El aria-label sigue diciendo "por WhatsApp", así que la
+   * accesibilidad no pierde nada.
+   */
+  hideIcon?: boolean;
 };
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-pill font-medium transition-colors duration-200 focus-visible:outline-none";
+  "inline-flex items-center justify-center gap-2 rounded-pill font-medium transition-colors duration-200";
 
 const variants: Record<Variant, string> = {
   // CTA principal: acento rojo sólido, texto blanco.
+  // Foco en blanco: el anillo rojo de globals.css se perdería contra el botón.
   primary:
-    "bg-accent px-7 py-3.5 text-[15px] text-white hover:bg-accent-ink",
+    "bg-accent px-7 py-3.5 text-[15px] text-white hover:bg-accent-ink focus-visible:outline-white",
   // Secundario sobre oscuro: contorno tenue que se ilumina.
   ghost:
     "border border-white/20 px-7 py-3.5 text-[15px] text-white hover:border-white/45 hover:bg-white/5",
   // Compacto para el navbar.
-  nav: "bg-accent px-4 py-2 text-[13px] text-white hover:bg-accent-ink",
+  nav: "bg-accent px-4 py-2 text-[13px] text-white hover:bg-accent-ink focus-visible:outline-white",
 };
 
 /**
@@ -33,17 +47,19 @@ export function WhatsAppButton({
   variant = "primary",
   className = "",
   ariaLabel,
+  message,
+  hideIcon = false,
 }: WhatsAppButtonProps) {
   return (
     <a
-      href={WHATSAPP_URL}
+      href={message ? buildWhatsappUrl(message) : WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={ariaLabel ?? `${label} por WhatsApp`}
       className={`${base} ${variants[variant]} ${className}`}
     >
       {label}
-      <WhatsAppGlyph />
+      {!hideIcon && <WhatsAppGlyph />}
     </a>
   );
 }
