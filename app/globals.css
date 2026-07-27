@@ -9,13 +9,17 @@
   }
 
   body {
-    @apply bg-surface text-ink font-sans antialiased;
+    /* font-light (300) es el peso base de TODO el sitio por decisión de Ariana
+       (17-07-2026). La única excepción es el titular del hero, que lleva su
+       propio font-semibold inline en Hero.tsx. */
+    @apply bg-surface text-ink font-sans font-light antialiased;
     text-rendering: optimizeLegibility;
   }
 
-  /* Las anclas se detienen bajo el nav sticky (62px) en vez de quedar ocultas. */
+  /* Las anclas se detienen bajo la píldora flotante del nav (top-4 + alto +
+     holgura) en vez de quedar ocultas. */
   section[id] {
-    scroll-margin-top: theme("spacing.nav");
+    scroll-margin-top: 96px;
   }
 
   /* Selección con el acento de marca. */

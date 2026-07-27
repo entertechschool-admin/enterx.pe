@@ -32,8 +32,13 @@ const config: Config = {
           100: "#EDEDED",
         },
         line: "#E6E6E6", // borde claro
-        muted: "#6B6B6B", // gris texto secundario
-        label: "#8A8A8A", // gris labels / mono descriptor
+        muted: "#6B6B6B", // gris texto secundario — SOLO sobre fondo claro
+        // Gemelo de `muted` para fondo oscuro. `muted` (#6B6B6B) da 3.6:1 sobre
+        // #0D0D0D y no llega al 4.5:1 de WCAG AA; este da 8.2:1 sobre #0D0D0D
+        // y 7.3:1 sobre #1A1A1A. Al pasar una sección a oscuro hay que
+        // cambiarlo — no basta con voltear el fondo.
+        "muted-dark": "#A8A8A8",
+        label: "#8A8A8A", // gris labels / mono descriptor — pasa en claro y oscuro
       },
       fontFamily: {
         sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
@@ -43,15 +48,15 @@ const config: Config = {
         // Clamps exactos del manual.
         h1: [
           "clamp(40px, 6.4vw, 86px)",
-          { lineHeight: "1.0", letterSpacing: "-0.035em", fontWeight: "600" },
+          { lineHeight: "1.0", letterSpacing: "-0.035em", fontWeight: "300" },
         ],
         h2: [
           "clamp(30px, 4vw, 52px)",
-          { lineHeight: "1.05", letterSpacing: "-0.025em", fontWeight: "600" },
+          { lineHeight: "1.05", letterSpacing: "-0.025em", fontWeight: "300" },
         ],
         h3: [
           "clamp(24px, 2.6vw, 34px)",
-          { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "600" },
+          { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "300" },
         ],
         lead: [
           "clamp(18px, 2vw, 22px)",
@@ -99,6 +104,17 @@ const config: Config = {
         // abajo (columna de texto). Glow anclado al centro-inferior.
         "hero-stage-mobile":
           "radial-gradient(120% 78% at 50% 100%, #3a130d 0%, #1e0a08 34%, #000 68%)",
+        // Fondo del Hero centrado — para la variante SIN isótopo. Los dos de
+        // arriba anclan el glow a un lado porque la otra mitad la ocupaba el
+        // clip y tenía que ser negro puro; sin clip, el glow va detrás del
+        // texto. Blanco sobre el guinda #3a130d da 16:1, de sobra.
+        //
+        // El centro sale de dos variables que HeroStage mueve con el puntero.
+        // Los valores por defecto (50%/58%) son los que ve quien no tiene ratón,
+        // quien pidió reducir movimiento y quien no ejecuta JS — el fondo se
+        // pinta bien sin que nada corra.
+        "hero-stage-center":
+          "radial-gradient(105% 105% at var(--hero-x, 50%) var(--hero-y, 58%), #3a130d 0%, #1e0a08 34%, #000 72%)",
         "ambient-red-bl":
           "radial-gradient(50% 50% at 18% 92%, rgba(217,40,26,0.10), transparent 70%)",
         "ambient-red-center":
@@ -125,10 +141,40 @@ const config: Config = {
           from: { filter: "drop-shadow(0 30px 80px rgba(217,40,26,0))" },
           to: { filter: "drop-shadow(0 30px 80px rgba(217,40,26,0.18))" },
         },
+        // Cinta de logos de clientes. La pista lleva la lista DUPLICADA, así
+        // que a -50% el segundo juego cae exactamente donde empezaba el
+        // primero y el bucle no tiene costura.
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
+        // Flotación lenta del isótopo cromado del hero (HeroChrome). Sube y
+        // baja apenas, para que el metal parezca suspendido y vivo sin robarle
+        // la atención al titular. `alternate` lo hace ir y volver suave.
+        "chrome-float": {
+          from: { transform: "translateY(-1.5%) rotate(-1.2deg)" },
+          to: { transform: "translateY(1.5%) rotate(1.2deg)" },
+        },
+        // Flotación muy sutil de las capturas de producto (ProductsAccordion):
+        // apenas se elevan y bajan, para que no se sientan estáticas.
+        "float-soft": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-5px)" },
+        },
+        // Parpadeo para los puntos de "escribiendo…"/"analizando…" de las
+        // animaciones ilustrativas de producto (ProductScene).
+        blink: {
+          "0%, 100%": { opacity: "0.25" },
+          "50%": { opacity: "1" },
+        },
       },
       animation: {
         reveal: "reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) both",
         "settle-shadow": "settle-shadow 0.9s ease-out forwards",
+        marquee: "marquee 45s linear infinite",
+        "chrome-float": "chrome-float 9s ease-in-out infinite alternate",
+        "float-soft": "float-soft 6s ease-in-out infinite",
+        blink: "blink 1.3s ease-in-out infinite",
       },
     },
   },

@@ -1,27 +1,57 @@
-import { hero } from "@/lib/content";
+import { hero, clients } from "@/lib/content";
 import { Container } from "@/components/ui/Container";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
-import { Parallax } from "@/components/ui/Parallax";
-import { HeroLogoVideo } from "@/components/ui/HeroLogoVideo";
+import { HeroVideo } from "@/components/ui/HeroVideo";
+import { ClientMarquee } from "@/components/ui/ClientMarquee";
+import { Reveal } from "@/components/ui/Reveal";
 
 /**
- * Hero — fondo oscuro #0D0D0D. Tipografía protagonista (H1 oversized con
- * "Menos del 5%" en rojo) + isótopo grande a la derecha con glow rojo radial.
- * Server Component. El texto NO se anima (es el LCP — debe pintar de inmediato);
- * el isótopo lleva parallax sutil y se forma una vez en video con canal alfa
- * (HEVC .mov para Safari / VP9 .webm para el resto), con PNG de fallback.
+ * Portada (Ariana, 22-07-2026, ref. Folioblox): el video es una TARJETA
+ * redondeada por todos lados (incluida la base), y la franja "confían en
+ * nosotros" va DEBAJO, sobre el fondo negro de la sección — no encima del video.
+ *
+ * Capas de la tarjeta: video (z-0) → velo oscuro (z-0) → contenido (z-10). El
+ * texto NO se anima (es el LCP). La franja de logos vive fuera de la tarjeta,
+ * sobre bg-ink (el degradado de la cinta funde a `from-ink`).
+ *
+ * id "clientes" en la franja para conservar el ancla.
  */
 export function Hero() {
   return (
-    <section
-      id="top"
-      className="relative overflow-hidden bg-black text-surface bg-hero-stage-mobile md:bg-hero-stage"
-    >
-      <Container className="relative grid items-center gap-10 py-16 md:grid-cols-[1.1fr_0.9fr] md:gap-10 md:py-24 lg:py-28">
-        {/* Columna de texto */}
-        <div className="order-2 md:order-1">
+    <section id="top" className="bg-ink px-3 pt-3 md:px-4 md:pt-4">
+      {/* Tarjeta redondeada del hero (video) */}
+      <div className="relative flex min-h-[82vh] flex-col items-center justify-center overflow-hidden rounded-[24px] bg-black text-surface md:rounded-[32px]">
+        <HeroVideo />
 
-          <h1 className="mt-6 text-balance text-[clamp(34px,4vw,44px)] font-semibold leading-[1.01] tracking-[-0.03em]">
+        {/* Velo MÓVIL: parejo, porque el texto ocupa todo el ancho. */}
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(13,13,13,0.78),rgba(13,13,13,0.62))] md:hidden"
+        />
+        {/* Velo DESKTOP: banda oscura solo tras el texto (izquierda) y se abre
+            pronto para que el video se luzca. Protege el contraste sin tapar. */}
+        <div
+          aria-hidden
+          className="absolute inset-0 hidden bg-[linear-gradient(to_right,rgba(13,13,13,0.86)_0%,rgba(13,13,13,0.55)_30%,rgba(13,13,13,0.08)_58%,rgba(13,13,13,0)_78%)] md:block"
+        />
+
+        <Container className="relative z-10 flex w-full flex-col items-start px-6 py-24 text-left">
+          <p className="mb-8 inline-flex items-center gap-2.5 rounded-pill border border-white/15 bg-white/5 px-4 py-1.5 text-[12px] text-surface/85">
+            {/* Punto VERDE = "disponible" (convención universal de estado).
+                ⚠️ Bruno: el verde está fuera de la paleta rojo/negro del manual
+                —mismo caso que el verde de Sprinta en ProductScene—. Decisión de
+                Ariana (24-07-2026) por legibilidad del estado. Para revertir:
+                cambiar los #22C55E por `bg-accent`. */}
+            <span aria-hidden className="relative flex size-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#22C55E] opacity-70" />
+              <span className="relative inline-flex size-2 rounded-full bg-[#22C55E]" />
+            </span>
+            {hero.availability}
+          </p>
+
+          {/* Contenido deliberadamente contenido en tamaño: el protagonista es
+              la imagen del video, el texto acompaña. */}
+          <h1 className="max-w-xl text-balance text-[clamp(28px,3.4vw,44px)] font-semibold leading-[1.05] tracking-[-0.03em]">
             {hero.titleParts.map((part, i) => (
               <span key={i} className={part.accent ? "text-accent" : undefined}>
                 {part.text}
@@ -29,52 +59,41 @@ export function Hero() {
             ))}
           </h1>
 
-          <p className="mt-7 max-w-lg text-lead text-white/70">
+          <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-white/70">
             {hero.subhead}
           </p>
 
-          <div className="mt-9 flex flex-wrap items-center gap-4">
-            <WhatsAppButton
-              label={hero.ctaLabel}
-              variant="primary"
-              ariaLabel="Conversemos por WhatsApp"
-            />
-            <span className="font-mono text-[12px] uppercase tracking-wide text-label">
-              {hero.footnote.join(" · ")}
-            </span>
+          <div className="mt-9 flex flex-wrap items-center gap-3">
+            {hero.ctas.map((cta) => (
+              <WhatsAppButton
+                key={cta.label}
+                label={cta.label}
+                variant={cta.variant}
+                message={cta.message}
+                ariaLabel={cta.ariaLabel}
+                hideIcon
+              />
+            ))}
           </div>
-        </div>
+        </Container>
+      </div>
 
-        {/* Isótopo — protagonista visual a la derecha (desktop), con parallax sutil. */}
-        <div className="relative order-1 flex justify-center md:order-2 md:justify-end">
-          <Parallax strength={28} className="relative">
-            {/* Escenario negro tras el isótopo: hunde la zona del clip a negro
-                puro para que el ruido de compresión del video (visible sobre
-                rojo) desaparezca. Va DENTRO del wrapper del isótopo para
-                centrarse exactamente en el clip; se extiende un 18% más allá
-                para que el borde del gradiente no coincida con el del video.
-                Decorativo, pintado antes que el isótopo → queda detrás. */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -inset-[18%] bg-stage-black"
-            />
-            <HeroLogoVideo
-              stillSrc="/iso_enterx.png"
-              webmSrc="/enterx_motion_original.webm"
-              hevcSrc="/enterx_motion_original.mov"
-              alt="Isótopo de EnterX: una constelación de esferas donde el punto rojo marca dónde empieza el valor real."
-              width={432}
-              height={462}
-              sizes="(max-width: 768px) 70vw, 42vw"
-              // El drop-shadow rojo lo aplica el propio componente por fase:
-              // mantenerlo aquí re-rasterizaría el blur en cada frame del video.
-              // Anchos en vw (no %): el wrapper vive en una cadena flex
-              // shrink-to-fit donde `w-full` colapsa al ancho natural del img.
-              className="w-[70vw] max-w-[360px] md:w-[18vw] md:max-w-[432px]"
-            />
-          </Parallax>
-        </div>
-      </Container>
+      {/* Clientes — su propia TARJETA (panel redondeado) debajo del hero. */}
+      <div
+        id="clientes"
+        className="mt-3 scroll-mt-24 overflow-hidden rounded-[24px] border border-white/[0.06] bg-ink-800 py-8 md:mt-4 md:rounded-[32px] md:py-10"
+      >
+        <Container>
+          <Reveal>
+            <p className="text-center font-mono text-[11px] uppercase tracking-label text-label">
+              {clients.trustedLabel}
+            </p>
+          </Reveal>
+        </Container>
+        <Reveal className="mt-10 md:mt-12">
+          <ClientMarquee />
+        </Reveal>
+      </div>
     </section>
   );
 }

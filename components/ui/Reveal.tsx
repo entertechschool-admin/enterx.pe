@@ -2,12 +2,16 @@
 
 import {
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
   type ElementType,
   type ReactNode,
 } from "react";
-import { useReducedMotion } from "@/lib/useReducedMotion";
+
+/** useLayoutEffect avisa por consola al renderizar en servidor; allí no corre igual. */
+const useIsomorphicLayoutEffect =
+  typeof window === "undefined" ? useEffect : useLayoutEffect;
 
 type RevealProps = {
   children: ReactNode;
@@ -18,11 +22,26 @@ type RevealProps = {
 };
 
 /**
+ * "pre"    — primer render (y SSR): visible, sin clases de animación, para que
+ *            el contenido exista aunque el JS no llegue nunca.
+ * "static" — el usuario pidió reducir movimiento: se queda visible, sin animar.
+ * "hidden" — listo para animar, esperando entrar al viewport.
+ * "shown"  — revelado.
+ */
+type Phase = "pre" | "static" | "hidden" | "shown";
+
+/**
  * Revela su contenido (fade-in + leve translateY) la primera vez que entra
  * al viewport. One-shot: se desuscribe tras revelar. Si el usuario pidió
  * reducir movimiento, aparece directamente sin animar.
  *
  * Usa IntersectionObserver (no scroll handler) y anima el wrapper.
+ *
+ * Sobre `prefers-reduced-motion`: NO usa useReducedMotion() a propósito. Ese
+ * hook arranca en `true` y lo confirma en un efecto; Reveal leería el valor
+ * pesimista en el primer ciclo, se daría por revelado y no animaría nunca.
+ * Aquí se consulta matchMedia en un layout effect: corre tras el primer paint
+ * "pre" pero ANTES de pintar "hidden", así no hay parpadeo de ida ni de vuelta.
  */
 export function Reveal({
   children,
@@ -31,21 +50,25 @@ export function Reveal({
   className = "",
 }: RevealProps) {
   const ref = useRef<HTMLElement | null>(null);
-  const [shown, setShown] = useState(false);
-  const reduced = useReducedMotion();
+  const [phase, setPhase] = useState<Phase>("pre");
+
+  useIsomorphicLayoutEffect(() => {
+    setPhase(
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "static"
+        : "hidden",
+    );
+  }, []);
 
   useEffect(() => {
-    if (reduced) {
-      setShown(true);
-      return;
-    }
+    if (phase !== "hidden") return;
     const el = ref.current;
     if (!el) return;
 
     const io = new IntersectionObserver(
       (entries) => {
         if (entries[0]?.isIntersecting) {
-          setShown(true);
+          setPhase("shown");
           io.disconnect();
         }
       },
@@ -53,23 +76,24 @@ export function Reveal({
     );
     io.observe(el);
     return () => io.disconnect();
-  }, [reduced]);
+  }, [phase]);
 
-  const style =
-    reduced || shown
-      ? undefined
-      : { transitionDelay: `${delay}ms` };
+  const animating = phase === "hidden" || phase === "shown";
 
   return (
     <Tag
       ref={ref}
-      style={style}
+      // El retardo se mantiene mientras dura la animación: si se quitara en el
+      // mismo commit que revela, el stagger no llegaría a aplicarse.
+      style={animating ? { transitionDelay: `${delay}ms` } : undefined}
       className={`${
-        reduced
-          ? ""
-          : `transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
-              shown ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
+        animating
+          ? `transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
+              phase === "shown"
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-5"
             }`
+          : ""
       } ${className}`}
     >
       {children}
