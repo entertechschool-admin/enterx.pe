@@ -125,10 +125,15 @@ const config: Config = {
           from: { filter: "drop-shadow(0 30px 80px rgba(217,40,26,0))" },
           to: { filter: "drop-shadow(0 30px 80px rgba(217,40,26,0.18))" },
         },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
       },
       animation: {
         reveal: "reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) both",
         "settle-shadow": "settle-shadow 0.9s ease-out forwards",
+        marquee: "marquee 45s linear infinite",
       },
     },
   },
