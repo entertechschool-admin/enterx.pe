@@ -13,9 +13,9 @@
     text-rendering: optimizeLegibility;
   }
 
-  /* Las anclas se detienen bajo el nav sticky (62px) en vez de quedar ocultas. */
+  /* Las anclas se detienen bajo la píldora flotante del nav. */
   section[id] {
-    scroll-margin-top: theme("spacing.nav");
+    scroll-margin-top: 96px;
   }
 
   /* Selección con el acento de marca. */
