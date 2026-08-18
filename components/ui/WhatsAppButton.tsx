@@ -1,4 +1,4 @@
-import { WHATSAPP_URL } from "@/lib/site";
+import { WHATSAPP_URL, buildWhatsappUrl } from "@/lib/site";
 
 type Variant = "primary" | "ghost" | "nav";
 
@@ -8,20 +8,24 @@ type WhatsAppButtonProps = {
   className?: string;
   /** Marca el CTA como el principal de la página para lectores de pantalla. */
   ariaLabel?: string;
+  /** Mensaje pre-cargado específico; si falta, usa el mensaje general. */
+  message?: string;
+  /** Oculta el glifo cuando el contexto ya comunica el canal. */
+  hideIcon?: boolean;
 };
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-pill font-medium transition-colors duration-200 focus-visible:outline-none";
+  "inline-flex touch-manipulation items-center justify-center gap-2 rounded-pill font-medium transition-colors duration-200";
 
 const variants: Record<Variant, string> = {
   // CTA principal: acento rojo sólido, texto blanco.
   primary:
-    "bg-accent px-7 py-3.5 text-[15px] text-white hover:bg-accent-ink",
+    "bg-accent px-7 py-3.5 text-[15px] text-white hover:bg-accent-ink focus-visible:outline-white",
   // Secundario sobre oscuro: contorno tenue que se ilumina.
   ghost:
     "border border-white/20 px-7 py-3.5 text-[15px] text-white hover:border-white/45 hover:bg-white/5",
   // Compacto para el navbar.
-  nav: "bg-accent px-4 py-2 text-[13px] text-white hover:bg-accent-ink",
+  nav: "bg-accent px-4 py-2 text-[13px] text-white hover:bg-accent-ink focus-visible:outline-white",
 };
 
 /**
@@ -33,17 +37,19 @@ export function WhatsAppButton({
   variant = "primary",
   className = "",
   ariaLabel,
+  message,
+  hideIcon = false,
 }: WhatsAppButtonProps) {
   return (
     <a
-      href={WHATSAPP_URL}
+      href={message ? buildWhatsappUrl(message) : WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={ariaLabel ?? `${label} por WhatsApp`}
       className={`${base} ${variants[variant]} ${className}`}
     >
       {label}
-      <WhatsAppGlyph />
+      {!hideIcon && <WhatsAppGlyph />}
     </a>
   );
 }
