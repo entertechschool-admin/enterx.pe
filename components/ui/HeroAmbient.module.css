@@ -20,8 +20,8 @@
 .lightStage {
   overflow: hidden;
   background:
-    radial-gradient(ellipse 82% 108% at 52% 54%, rgba(217, 40, 26, 0.34) 0%, rgba(116, 25, 17, 0.25) 34%, transparent 72%),
-    linear-gradient(105deg, #000 0%, #100706 14%, #32100c 28%, #641911 42%, #821f16 52%, #55150f 64%, #210a08 77%, #000 100%);
+    radial-gradient(ellipse 62% 92% at 50% 54%, rgba(116, 25, 17, 0.18) 0%, rgba(58, 14, 12, 0.12) 38%, transparent 72%),
+    linear-gradient(105deg, #000 0%, #090303 17%, #1b0606 34%, #310b09 50%, #1c0606 68%, #090303 84%, #000 100%);
 }
 
 .lightLayer {
@@ -30,24 +30,24 @@
 }
 
 .primaryBand {
-  inset: -54% -46%;
-  background: linear-gradient(112deg, transparent 18%, rgba(125, 20, 14, 0.16) 31%, rgba(217, 40, 26, 0.38) 47%, rgba(100, 16, 12, 0.16) 63%, transparent 78%);
-  transform: rotate(-9deg) translate3d(-8%, 0, 0);
-  animation: ambient-primary 26s ease-in-out infinite alternate;
+  inset: -38% -32%;
+  background: linear-gradient(112deg, transparent 18%, rgba(91, 13, 11, 0.28) 28%, rgba(168, 27, 19, 0.76) 39%, rgba(217, 40, 26, 0.62) 48%, rgba(87, 12, 10, 0.28) 59%, transparent 70%);
+  transform: rotate(-17deg) translate3d(-12%, -2%, 0);
+  animation: ambient-primary 16s ease-in-out infinite alternate;
 }
 
 .secondaryBand {
-  inset: -48% -40%;
-  background: linear-gradient(104deg, transparent 34%, rgba(217, 40, 26, 0.22) 46%, rgba(94, 15, 12, 0.08) 55%, transparent 68%);
-  transform: rotate(12deg) translate3d(14%, 3%, 0);
-  animation: ambient-secondary 21s ease-in-out infinite alternate;
+  inset: -32% -28%;
+  background: linear-gradient(104deg, transparent 31%, rgba(101, 14, 16, 0.18) 39%, rgba(228, 58, 43, 0.62) 47%, rgba(244, 93, 72, 0.42) 52%, rgba(91, 12, 13, 0.18) 59%, transparent 67%);
+  transform: rotate(15deg) translate3d(16%, 5%, 0);
+  animation: ambient-secondary 19s ease-in-out infinite alternate;
 }
 
 .bloom {
-  background: radial-gradient(ellipse 88% 108% at 54% 52%, rgba(217, 40, 26, 0.24), rgba(58, 19, 13, 0.12) 38%, transparent 74%);
-  transform: scale(1.06) translate3d(2%, 0, 0);
-  opacity: 0.78;
-  animation: ambient-bloom 19s ease-in-out infinite alternate;
+  background: linear-gradient(118deg, transparent 10%, rgba(43, 7, 10, 0.34) 25%, rgba(84, 13, 18, 0.48) 43%, rgba(58, 9, 13, 0.42) 63%, transparent 84%);
+  transform: rotate(-7deg) translate3d(10%, 4%, 0);
+  opacity: 0.58;
+  animation: ambient-bloom 22s ease-in-out infinite alternate;
 }
 
 .person {
@@ -103,18 +103,18 @@
 }
 
 @keyframes ambient-primary {
-  from { transform: rotate(-9deg) translate3d(-8%, 0, 0); }
-  to { transform: rotate(-5deg) translate3d(8%, 2%, 0); }
+  from { transform: rotate(-17deg) translate3d(-12%, -2%, 0); opacity: 0.82; }
+  to { transform: rotate(-10deg) translate3d(13%, 6%, 0); opacity: 1; }
 }
 
 @keyframes ambient-secondary {
-  from { transform: rotate(12deg) translate3d(14%, 3%, 0); }
-  to { transform: rotate(7deg) translate3d(-6%, -2%, 0); }
+  from { transform: rotate(15deg) translate3d(16%, 5%, 0); opacity: 0.62; }
+  to { transform: rotate(7deg) translate3d(-13%, -6%, 0); opacity: 0.96; }
 }
 
 @keyframes ambient-bloom {
-  from { opacity: 0.56; transform: scale(1.08) translate3d(3%, 0, 0); }
-  to { opacity: 0.82; transform: scale(1.16) translate3d(-3%, 2%, 0); }
+  from { opacity: 0.38; transform: rotate(-7deg) translate3d(10%, 4%, 0); }
+  to { opacity: 0.68; transform: rotate(-14deg) translate3d(-8%, -3%, 0); }
 }
 
 @media (max-width: 767px) {
@@ -125,11 +125,11 @@
   }
 
   .primaryBand {
-    inset: -44% -68%;
+    inset: -34% -62%;
   }
 
   .secondaryBand {
-    inset: -38% -60%;
+    inset: -28% -54%;
   }
 }
 
