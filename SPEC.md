@@ -15,7 +15,8 @@
 - **Meta:** que un founder que entra desde la masterclass entienda en <30s **el salto que falta**
   (casi todos usan IA, casi nadie tiene agentes), **qué ofrece EnterX** y **cómo conversar** con
   nosotros.
-- **CTA único y suave:** WhatsApp "Conversemos". (Dato en `CONTEXT.md §contacto` — hoy `[POR VALIDAR]`.)
+- **CTAs suaves:** el hero ofrece "Agendar una asesoría gratuita" y "Quiero información", ambos
+  como enlaces a WhatsApp con mensajes pre-cargados validados en `CONTEXT.md`.
 - **Definición de hecho (v1):** one-page responsive, deploy en `enterx.pe`, sin datos inventados,
   fiel al manual de marca, carga rápida, sin errores de consola.
 
@@ -39,12 +40,13 @@
 - Scroll suave a las anclas.
 
 ### SECCIÓN 1 — HERO (fondo `#0D0D0D`)
-- **H1:** **"El 100% de las empresas usa ChatGPT. Menos del 5% usa agentes de IA."**
-  (2ª frase / el "<5%" en rojo `#D9281A`).
-- **Subhead:** el salto del uso básico a los agentes no son las herramientas — es el criterio.
-  EnterX lo construye contigo. (Ver copy exacto en `CONTEXT.md`.)
-- **Elementos:** isótopo (`iso_enterx.png`) a la derecha · glow rojo radial sutil ·
-  CTA primario "Conversemos" (WhatsApp) · pie con `enterx.pe · enterx.io`.
+- **Disponibilidad:** "Disponibles para nuevos proyectos".
+- **H1:** **"Soluciones digitales con IA que potencian a tu equipo"**; "potencian" en rojo
+  `#D9281A`.
+- **Subhead:** "Formación e implementación de IA para tu operación, tu equipo y tus procesos
+  —con tu gente y sin reemplazar a nadie— en Perú.".
+- **Elementos:** video ambiental con poster estático · CTA primario "Agendar una asesoría gratuita"
+  y CTA secundario "Quiero información", ambos por WhatsApp · control de pausa accesible.
 
 ### SECCIÓN 2 — LA BRECHA / MADUREZ EN IA (timeline, fondo a elección sobrio)
 - **Formato:** **timeline horizontal** de **4 niveles** (→ se apila **vertical en mobile/responsive**).
@@ -72,7 +74,7 @@
 ### SECCIÓN 4 — CTA (oscuro full-bleed `#0D0D0D`)
 - **Elementos:** isótopo · tagline de marca **"No dejamos a las empresas dependientes de nosotros.
   Las dejamos capaces."** · botón WhatsApp "Conversemos".
-- Número WhatsApp `[POR VALIDAR]` — **no publicar sin completar**.
+- Los enlaces de WhatsApp y sus datos viven en `CONTEXT.md §0` y `§9`.
 
 ### FOOTER
 - `EnterX · enterx.pe · 2026` + línea de respaldo compacta: **CETEMIN · Enter Tech School**.

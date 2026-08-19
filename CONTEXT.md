@@ -12,14 +12,21 @@
 
 ## 0. Copy del HERO (sección 1 del sitio)
 
-- **H1 (título):** **"El 100% de las empresas usa ChatGPT. Menos del 5% usa agentes de IA."**
-  - El fragmento **"Menos del 5%"** (o "<5%") va en rojo `#D9281A`.
-- **Subhead:** "El salto del uso básico a los agentes no son las herramientas — es el criterio.
-  En EnterX lo construimos contigo."
-- **CTA:** "Conversemos" → WhatsApp (ver §contacto).
-- **Nota de respaldo del dato:** el "100% usa ChatGPT / <5% usa agentes" es una **lectura de
-  mercado de EnterX** (criterio propio, coherente con el brand book que usa ~80% en N1 / ~5% en
-  N3+). **No** lleva cita externa ni asterisco legal.
+- **Disponibilidad:** "Disponibles para nuevos proyectos".
+- **H1 (título):** **"Soluciones digitales con IA que potencian a tu equipo"**.
+  - El fragmento **"potencian"** va en rojo `#D9281A`.
+- **Subhead:** "Formación e implementación de IA para tu operación, tu equipo y tus procesos
+  —con tu gente y sin reemplazar a nadie— en Perú."
+- **CTA primario:** "Agendar una asesoría gratuita" → WhatsApp, con el mensaje "Hola EnterX,
+  quiero agendar una asesoría gratuita.".
+- **CTA secundario:** "Quiero información" → WhatsApp, con el mensaje "Hola EnterX, quiero
+  información sobre lo que hacen.".
+
+## 0.1 Clientes confirmados del hero
+
+La franja usa el rótulo **"Empresas que confían en nosotros"** y estos 13 clientes, en este orden:
+StartUPC, Atlas Copco, WIM Perú, ciemam, Cori Puno, QTC, grupo tesacom, lift, Buenaventura,
+holos, Consorcio Minero Horizonte, BOB y CETEMIN.
 
 ---
 

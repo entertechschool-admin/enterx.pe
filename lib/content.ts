@@ -10,7 +10,7 @@
 export type TitlePart = { text: string; accent?: boolean };
 
 export const hero = {
-  pendingValidation: true,
+  pendingValidation: false,
   availability: "Disponibles para nuevos proyectos",
   titleParts: [
     { text: "Soluciones digitales con IA que " },
@@ -43,7 +43,7 @@ export type Client = {
 };
 
 export const clients = {
-  pendingValidation: true,
+  pendingValidation: false,
   trustedLabel: "Empresas que confían en nosotros",
   items: [
     { name: "StartUPC", logo: "/clients/startupc-light.png", width: 234, height: 63 },
