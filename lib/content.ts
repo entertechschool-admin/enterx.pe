@@ -10,20 +10,56 @@
 export type TitlePart = { text: string; accent?: boolean };
 
 export const hero = {
-  /**
-   * "+92% de las empresas usa ChatGPT, pero menos del 5% tiene agentes de IA trabajando."
-   * El fragmento "menos del 5%" va en acento rojo.
-   * Cifra <5% defendible (Gartner 2025: <5% de apps empresariales con agentes específicos).
-   */
+  pendingValidation: false,
+  availability: "Disponibles para nuevos proyectos",
   titleParts: [
-    { text: "+92% de las empresas usa ChatGPT, pero " },
-    { text: "menos del 5%", accent: true },
-    { text: " tiene agentes de IA trabajando." },
+    { text: "Soluciones digitales con IA que " },
+    { text: "potencian", accent: true },
+    { text: " a tu equipo" },
   ] as TitlePart[],
   subhead:
-    "El salto del uso básico a los agentes no son las herramientas — es un sistema probado.",
-  ctaLabel: "Conversemos",
-  footnote: [],
+    "Formación e implementación de IA para tu operación, tu equipo y tus procesos —con tu gente y sin reemplazar a nadie— en Perú.",
+  ctas: [
+    {
+      label: "Agendar una asesoría gratuita",
+      variant: "primary",
+      message: "Hola EnterX, quiero agendar una asesoría gratuita.",
+      ariaLabel: "Agendar una asesoría gratuita por WhatsApp",
+    },
+    {
+      label: "Quiero información",
+      variant: "ghost",
+      message: "Hola EnterX, quiero información sobre lo que hacen.",
+      ariaLabel: "Pedir información por WhatsApp",
+    },
+  ] as const,
+} as const;
+
+export type Client = {
+  name: string;
+  logo: string;
+  width: number;
+  height: number;
+};
+
+export const clients = {
+  pendingValidation: false,
+  trustedLabel: "Empresas que confían en nosotros",
+  items: [
+    { name: "StartUPC", logo: "/clients/startupc-light.png", width: 234, height: 63 },
+    { name: "Atlas Copco", logo: "/clients/atlas-copco-light.png", width: 166, height: 85 },
+    { name: "WIM Perú", logo: "/clients/wim-peru-light.png", width: 181, height: 93 },
+    { name: "ciemam", logo: "/clients/ciemam-light.png", width: 126, height: 97 },
+    { name: "Cori Puno", logo: "/clients/cori-puno-light.png", width: 327, height: 61 },
+    { name: "QTC", logo: "/clients/qtc-light.png", width: 128, height: 63 },
+    { name: "grupo tesacom", logo: "/clients/grupo-tesacom-light.png", width: 214, height: 56 },
+    { name: "lift", logo: "/clients/lift-light.png", width: 112, height: 74 },
+    { name: "Buenaventura", logo: "/clients/buenaventura-light.png", width: 336, height: 45 },
+    { name: "holos", logo: "/clients/holos-light.png", width: 130, height: 49 },
+    { name: "Consorcio Minero Horizonte", logo: "/clients/consorcio-minero-horizonte-light.png", width: 168, height: 76 },
+    { name: "BOB", logo: "/clients/bob-light.png", width: 157, height: 80 },
+    { name: "CETEMIN", logo: "/clients/cetemin-light.png", width: 536, height: 150 },
+  ] as Client[],
 } as const;
 
 // ---- Navegación ----------------------------------------------------------
