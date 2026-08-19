@@ -88,27 +88,8 @@ const config: Config = {
           "0 0 0 6px rgba(217,40,26,0.18), 0 0 30px rgba(217,40,26,0.50)",
       },
       backgroundImage: {
-        // Fondo del Hero — desktop: guinda a la izquierda (tras el texto) → negro
-        // puro a la derecha (tras el isótopo). Radial anclado al borde izq. para
-        // el "glow" cálido de la referencia; a 64% ya es #000, así la columna del
-        // isótopo (der.) queda negra total y el fondo #000 del video no deja
-        // costura en el borde del clip.
-        "hero-stage":
-          "radial-gradient(85% 125% at 8% 52%, #3a130d 0%, #1e0a08 32%, #000 64%)",
-        // Fondo del Hero — mobile: negro puro arriba (isótopo, order-1) → guinda
-        // abajo (columna de texto). Glow anclado al centro-inferior.
-        "hero-stage-mobile":
-          "radial-gradient(120% 78% at 50% 100%, #3a130d 0%, #1e0a08 34%, #000 68%)",
         "ambient-red-bl":
           "radial-gradient(50% 50% at 18% 92%, rgba(217,40,26,0.10), transparent 70%)",
-        "ambient-red-center":
-          "radial-gradient(55% 55% at 50% 45%, rgba(217,40,26,0.16), transparent 70%)",
-        // Escenario negro tras el isótopo: hunde la zona del clip a negro puro
-        // para que el ruido de compresión del video (visible sobre rojo)
-        // desaparezca. El borde transparente cae más allá del clip para no
-        // coincidir nunca con el borde del video.
-        "stage-black":
-          "radial-gradient(60% 55% at 50% 45%, #000 0%, #000 35%, transparent 75%)",
       },
       backdropBlur: {
         nav: "14px",
@@ -118,13 +99,6 @@ const config: Config = {
           from: { opacity: "0", transform: "translateY(14px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
-        // La sombra roja del isótopo se enciende una sola vez al asentarse el
-        // logo (reemplaza el antiguo "bloom" que reintroducía rojo tras el
-        // cuerpo). Solo corre en "settled", con el frame ya congelado.
-        "settle-shadow": {
-          from: { filter: "drop-shadow(0 30px 80px rgba(217,40,26,0))" },
-          to: { filter: "drop-shadow(0 30px 80px rgba(217,40,26,0.18))" },
-        },
         marquee: {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(-50%)" },
@@ -132,7 +106,6 @@ const config: Config = {
       },
       animation: {
         reveal: "reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) both",
-        "settle-shadow": "settle-shadow 0.9s ease-out forwards",
         marquee: "marquee 45s linear infinite",
       },
     },

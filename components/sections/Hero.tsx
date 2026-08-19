@@ -17,7 +17,7 @@ export function Hero() {
         <Container className="relative z-10 flex w-full flex-col items-start px-6 py-24 text-left">
           <p className="mb-8 inline-flex items-center gap-2.5 rounded-pill border border-white/15 bg-white/5 px-4 py-1.5 text-[12px] text-surface/85">
             <span aria-hidden className="relative flex size-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-70" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-70 motion-reduce:animate-none" />
               <span className="relative inline-flex size-2 rounded-full bg-accent" />
             </span>
             {hero.availability}
