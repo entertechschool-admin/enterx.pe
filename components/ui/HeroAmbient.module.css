@@ -12,15 +12,16 @@
 }
 
 .lightStage,
-.lightLayer,
-.person {
+.lightLayer {
   position: absolute;
   inset: 0;
 }
 
 .lightStage {
   overflow: hidden;
-  background: #000;
+  background:
+    radial-gradient(ellipse 82% 108% at 52% 54%, rgba(217, 40, 26, 0.34) 0%, rgba(116, 25, 17, 0.25) 34%, transparent 72%),
+    linear-gradient(105deg, #000 0%, #100706 14%, #32100c 28%, #641911 42%, #821f16 52%, #55150f 64%, #210a08 77%, #000 100%);
 }
 
 .lightLayer {
@@ -29,33 +30,35 @@
 }
 
 .primaryBand {
-  inset: -42% -34%;
-  background: linear-gradient(112deg, transparent 23%, rgba(125, 20, 14, 0.22) 35%, rgba(217, 40, 26, 0.72) 47%, rgba(100, 16, 12, 0.18) 59%, transparent 72%);
+  inset: -54% -46%;
+  background: linear-gradient(112deg, transparent 18%, rgba(125, 20, 14, 0.16) 31%, rgba(217, 40, 26, 0.38) 47%, rgba(100, 16, 12, 0.16) 63%, transparent 78%);
   transform: rotate(-9deg) translate3d(-8%, 0, 0);
   animation: ambient-primary 26s ease-in-out infinite alternate;
 }
 
 .secondaryBand {
-  inset: -34% -28%;
-  background: linear-gradient(104deg, transparent 42%, rgba(217, 40, 26, 0.4) 49%, rgba(94, 15, 12, 0.08) 56%, transparent 63%);
+  inset: -48% -40%;
+  background: linear-gradient(104deg, transparent 34%, rgba(217, 40, 26, 0.22) 46%, rgba(94, 15, 12, 0.08) 55%, transparent 68%);
   transform: rotate(12deg) translate3d(14%, 3%, 0);
   animation: ambient-secondary 21s ease-in-out infinite alternate;
 }
 
 .bloom {
-  background: radial-gradient(ellipse at 72% 50%, rgba(217, 40, 26, 0.22), rgba(58, 19, 13, 0.1) 28%, transparent 66%);
-  transform: scale(1.08) translate3d(3%, 0, 0);
-  opacity: 0.72;
+  background: radial-gradient(ellipse 88% 108% at 54% 52%, rgba(217, 40, 26, 0.24), rgba(58, 19, 13, 0.12) 38%, transparent 74%);
+  transform: scale(1.06) translate3d(2%, 0, 0);
+  opacity: 0.78;
   animation: ambient-bloom 19s ease-in-out infinite alternate;
 }
 
 .person {
+  position: absolute;
   z-index: 1;
+  top: auto;
+  right: 0;
+  bottom: 0;
   left: auto;
-  bottom: -12%;
-  width: min(72vw, 790px);
+  width: clamp(560px, 43vw, 720px);
   height: auto;
-  aspect-ratio: 1;
 }
 
 .personImage {
@@ -116,17 +119,17 @@
 
 @media (max-width: 767px) {
   .person {
-    right: -20%;
-    bottom: -14%;
-    width: 108vw;
+    right: -18%;
+    bottom: 0;
+    width: min(92vw, 430px);
   }
 
   .primaryBand {
-    inset: -34% -62%;
+    inset: -44% -68%;
   }
 
   .secondaryBand {
-    inset: -30% -54%;
+    inset: -38% -60%;
   }
 }
 

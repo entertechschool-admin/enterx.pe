@@ -19,7 +19,7 @@ export function HeroAmbient({ children }: { children?: ReactNode }) {
             width={1254}
             height={1254}
             priority
-            sizes="(max-width: 768px) 105vw, 58vw"
+            sizes="(max-width: 768px) 92vw, min(43vw, 720px)"
             className={styles.personImage}
           />
         </div>

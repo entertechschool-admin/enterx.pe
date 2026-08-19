@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./HeroAmbient.module.css";
 
 type MotionState = "running" | "paused";
@@ -11,6 +11,7 @@ export function HeroAmbientController({ children }: { children: ReactNode }) {
   const [inViewport, setInViewport] = useState(false);
   const [documentVisible, setDocumentVisible] = useState(true);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const controllerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -22,11 +23,11 @@ export function HeroAmbientController({ children }: { children: ReactNode }) {
     media.addEventListener("change", updateMotionPreference);
     document.addEventListener("visibilitychange", updateVisibility);
 
-    const scene = document.querySelector<HTMLElement>(`.${styles.scene}`);
-    const observer = scene
+    const controller = controllerRef.current;
+    const observer = controller
       ? new IntersectionObserver(([entry]) => setInViewport(entry.isIntersecting), { threshold: 0.15 })
       : null;
-    if (scene && observer) observer.observe(scene);
+    if (controller && observer) observer.observe(controller);
 
     return () => {
       media.removeEventListener("change", updateMotionPreference);
@@ -40,6 +41,7 @@ export function HeroAmbientController({ children }: { children: ReactNode }) {
 
   return (
     <div
+      ref={controllerRef}
       className={styles.controller}
       data-motion={motionState}
       data-motion-reduced={reducedMotion ? "true" : "false"}

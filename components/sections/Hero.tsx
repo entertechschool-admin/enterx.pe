@@ -11,7 +11,7 @@ export function Hero() {
       <div className="relative flex min-h-[82vh] flex-col items-center justify-center overflow-hidden rounded-[24px] bg-black text-surface md:rounded-[32px]">
         <HeroAmbient>
           <div aria-hidden className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(13,13,13,0.78),rgba(13,13,13,0.62))] md:hidden" />
-          <div aria-hidden className="absolute inset-0 hidden bg-[linear-gradient(to_right,rgba(13,13,13,0.86)_0%,rgba(13,13,13,0.55)_30%,rgba(13,13,13,0.08)_58%,rgba(13,13,13,0)_78%)] md:block" />
+          <div aria-hidden className="absolute inset-0 hidden bg-[linear-gradient(to_right,rgba(13,13,13,0.78)_0%,rgba(13,13,13,0.45)_30%,rgba(13,13,13,0.06)_58%,rgba(13,13,13,0)_78%)] md:block" />
         </HeroAmbient>
 
         <Container className="relative z-10 flex w-full flex-col items-start px-6 py-24 text-left">
