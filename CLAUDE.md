@@ -96,14 +96,17 @@ Next.js (App Router) + TypeScript + Tailwind. Fuentes vía `next/font`. Assets d
   puerto y luego muere). Antes de arrancar dev, `pkill -f "next dev"` y usa puerto fijo
   (`PORT=3005 npm run dev`); verifica con `curl -s localhost:3005 -o /dev/null -w "%{http_code}"`
   **antes** de abrir el navegador. La extensión de Chrome puede requerir autorizar el puerto.
-- **Video actual del hero:** `components/ui/HeroVideo.tsx` sirve `public/background-home.mp4`,
-  H.264 sin audio, con `public/hero-poster.png` como fallback estático. Es una isla cliente mínima:
-  el hero y su contenido siguen siendo Server Components; el botón permite pausar/reanudar y tiene
-  foco visible y target táctil mínimo de 44px.
-- **Reduced motion del hero:** `HeroVideo` comprueba `(prefers-reduced-motion: reduce)` antes de
-  montar la fuente del video. En ese modo solo se muestra el poster: no se descarga ni se reproduce
-  el MP4. El punto de disponibilidad y la cinta de clientes desactivan sus animaciones con
-  `motion-reduce`.
+- **Hero Ambient System:** `components/ui/HeroAmbient.tsx` renderiza en servidor una escena negra
+  con bandas/bloom CSS y `public/hero-person.png` vía `next/image`; `HeroAmbientController.tsx` es
+  la isla cliente mínima para `IntersectionObserver`, `visibilitychange`, pausa manual y
+  `prefers-reduced-motion`. No existe video ni poster del hero.
+- **Ciclo de vida del ambiente:** las capas solo animan `transform`/`opacity` y se ejecutan cuando el
+  hero está visible, la pestaña visible, el usuario no pausó y no pidió reducir movimiento. El
+  control tiene foco visible, labels de pausa/reanudación y target táctil mínimo de 44px. La escena
+  expone `data-motion="running|paused"` para controlar `animation-play-state` desde CSS.
+- **Reduced motion del hero:** el ambiente se mantiene estático desde CSS y el control se oculta con
+  `prefers-reduced-motion: reduce`; los cambios vivos de la preferencia también detienen/reanudan
+  el estado efectivo sin tocar el copy ni serializar `lib/content.ts`.
 - **Cinta de clientes:** `ClientMarquee` renderiza los logos en servidor; `MarqueeController` es
   la única isla para pausar/reanudar el desplazamiento. Usa solo los PNG `*-light.png` listados en
   `lib/content.ts`.

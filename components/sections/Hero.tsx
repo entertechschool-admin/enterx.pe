@@ -1,18 +1,18 @@
 import { hero, clients } from "@/lib/content";
 import { Container } from "@/components/ui/Container";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
-import { HeroVideo } from "@/components/ui/HeroVideo";
+import { HeroAmbient } from "@/components/ui/HeroAmbient";
 import { ClientMarquee } from "@/components/ui/ClientMarquee";
 
-/** Portada: el contenido permanece en servidor; HeroVideo es la isla visual. */
+/** Portada: el contenido permanece en servidor; el ambiente es la única isla visual. */
 export function Hero() {
   return (
     <section id="top" className="bg-ink px-3 pt-3 md:px-4 md:pt-4">
       <div className="relative flex min-h-[82vh] flex-col items-center justify-center overflow-hidden rounded-[24px] bg-black text-surface md:rounded-[32px]">
-        <HeroVideo>
+        <HeroAmbient>
           <div aria-hidden className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(13,13,13,0.78),rgba(13,13,13,0.62))] md:hidden" />
           <div aria-hidden className="absolute inset-0 hidden bg-[linear-gradient(to_right,rgba(13,13,13,0.86)_0%,rgba(13,13,13,0.55)_30%,rgba(13,13,13,0.08)_58%,rgba(13,13,13,0)_78%)] md:block" />
-        </HeroVideo>
+        </HeroAmbient>
 
         <Container className="relative z-10 flex w-full flex-col items-start px-6 py-24 text-left">
           <p className="mb-8 inline-flex items-center gap-2.5 rounded-pill border border-white/15 bg-white/5 px-4 py-1.5 text-[12px] text-surface/85">
