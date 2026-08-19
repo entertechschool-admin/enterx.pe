@@ -48,17 +48,17 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-4 z-50 flex justify-center px-4">
+    <header className="fixed inset-x-0 top-4 md:top-7 z-50 flex justify-center px-6 md:px-4">
       <a
         href="#main-content"
-        className="sr-only fixed left-4 top-4 z-[70] rounded-pill bg-surface px-4 py-3 text-sm font-medium text-ink shadow-card focus:not-sr-only"
+        className="sr-only fixed left-4 top-7 z-[70] rounded-pill bg-surface px-4 py-3 text-sm font-medium text-ink shadow-card focus:not-sr-only"
       >
         Saltar al contenido
       </a>
 
       <nav
         aria-label="Principal"
-        className="relative flex w-full max-w-4xl items-center justify-between gap-4 rounded-pill border border-white/15 bg-ink/40 py-2 pl-6 pr-2 shadow-[0_10px_40px_-8px_rgba(0,0,0,0.6)] backdrop-blur-xl backdrop-saturate-150"
+        className="relative flex w-full max-w-4xl items-center justify-between gap-4 rounded-[1.3rem] md:rounded-pill border border-white/15 bg-ink/40 py-2 pl-6 pr-2 shadow-[0_10px_40px_-8px_rgba(0,0,0,0.6)] backdrop-blur-xl backdrop-saturate-150"
       >
         <span
           aria-hidden="true"
