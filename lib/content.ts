@@ -62,6 +62,22 @@ export const clients = {
   ] as Client[],
 } as const;
 
+// ---- Banda estadística ---------------------------------------------------
+
+export const statBand = {
+  attribution: "Lectura de mercado EnterX",
+  statement: "Casi todas usan IA",
+  metric: "<5%",
+  metricLabel: "llega a agentes",
+  journey: {
+    n1: "Preguntas a la IA",
+    n2: "Context & Prompt Engineering",
+    gap: "La brecha",
+    criterion: "Criterio",
+    n3: "Agentes de IA",
+  },
+} as const;
+
 // ---- Navegación ----------------------------------------------------------
 
 export type NavLink = { id: string; label: string };
