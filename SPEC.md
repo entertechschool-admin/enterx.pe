@@ -7,6 +7,8 @@
 >
 > El **contenido y la marca** salen de `CONTEXT.md` (fuente de verdad). La **referencia visual
 > canónica** es `brand/reference/manual-de-marca.html`. Las **reglas de trabajo** están en `CLAUDE.md`.
+> La implementación del ambiente visual del hero se define en
+> `docs/HERO-AMBIENT-SYSTEM-SPEC.md`; esa spec complementaria no modifica el copy ni los CTA.
 
 ---
 
@@ -45,8 +47,9 @@
   `#D9281A`.
 - **Subhead:** "Formación e implementación de IA para tu operación, tu equipo y tus procesos
   —con tu gente y sin reemplazar a nadie— en Perú.".
-- **Elementos:** video ambiental con poster estático · CTA primario "Agendar una asesoría gratuita"
-  y CTA secundario "Quiero información", ambos por WhatsApp · control de pausa accesible.
+- **Elementos:** Hero Ambient System con persona transparente estática y luces CSS animadas · CTA
+  primario "Agendar una asesoría gratuita" y CTA secundario "Quiero información", ambos por
+  WhatsApp · control de pausa accesible.
 
 ### SECCIÓN 2 — LA BRECHA / MADUREZ EN IA (timeline, fondo a elección sobrio)
 - **Formato:** **timeline horizontal** de **4 niveles** (→ se apila **vertical en mobile/responsive**).

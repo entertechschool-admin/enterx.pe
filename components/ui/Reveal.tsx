@@ -15,6 +15,8 @@ type RevealProps = {
   delay?: number;
   as?: ElementType;
   className?: string;
+  /** Permite que descendientes reaccionen a `data-revealed` sin animar la raíz. */
+  animateSelf?: boolean;
 };
 
 /**
@@ -29,12 +31,15 @@ export function Reveal({
   delay = 0,
   as: Tag = "div",
   className = "",
+  animateSelf = true,
 }: RevealProps) {
   const ref = useRef<HTMLElement | null>(null);
   const [shown, setShown] = useState(false);
-  const reduced = useReducedMotion();
+  const preference = useReducedMotion();
+  const reduced = preference === true;
 
   useEffect(() => {
+    if (preference === null) return;
     if (reduced) {
       setShown(true);
       return;
@@ -53,10 +58,10 @@ export function Reveal({
     );
     io.observe(el);
     return () => io.disconnect();
-  }, [reduced]);
+  }, [preference, reduced]);
 
   const style =
-    reduced || shown
+    preference !== false || shown
       ? undefined
       : { transitionDelay: `${delay}ms` };
 
@@ -64,10 +69,11 @@ export function Reveal({
     <Tag
       ref={ref}
       style={style}
+      data-revealed={shown ? "true" : "false"}
       className={`${
-        reduced
+        !animateSelf || reduced
           ? ""
-          : `transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
+          : `transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none ${
               shown ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
             }`
       } ${className}`}

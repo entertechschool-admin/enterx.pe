@@ -3,12 +3,11 @@
 import { useEffect, useState } from "react";
 
 /**
- * Devuelve true si el usuario pidió reducir el movimiento.
- * Empieza en `true` (lado seguro: sin animar) hasta confirmar en cliente,
- * así el primer paint no dispara movimiento no deseado.
+ * Devuelve la preferencia de movimiento cuando el cliente ya la resolvió.
+ * `null` evita asumir reduced motion antes de leer la media query.
  */
-export function useReducedMotion(): boolean {
-  const [reduced, setReduced] = useState(true);
+export function useReducedMotion(): boolean | null {
+  const [reduced, setReduced] = useState<boolean | null>(null);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");

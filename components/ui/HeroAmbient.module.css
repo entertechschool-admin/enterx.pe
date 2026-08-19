@@ -1,0 +1,144 @@
+.controller {
+  position: absolute;
+  inset: 0;
+  isolation: isolate;
+}
+
+.scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+.lightStage,
+.lightLayer {
+  position: absolute;
+  inset: 0;
+}
+
+.lightStage {
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 62% 92% at 50% 54%, rgba(116, 25, 17, 0.18) 0%, rgba(58, 14, 12, 0.12) 38%, transparent 72%),
+    linear-gradient(105deg, #e97eac 0%, #f6b5ae 17%, #c02a77 34%, #8a302b 50%, #540427 68%, #6a1919 84%, #d94b2f 100%);
+}
+
+.lightLayer {
+  pointer-events: none;
+  transform-origin: 50% 50%;
+}
+
+.primaryBand {
+  inset: -38% -32%;
+  background: linear-gradient(112deg, transparent 18%, rgba(139, 22, 18, 0.28) 28%, rgba(208, 53, 15, 0.76) 39%, rgba(231, 49, 13, 0.62) 48%, rgba(208, 42, 161, 0.28) 59%, transparent 70%);
+  transform: rotate(-17deg) translate3d(-12%, -2%, 0);
+  animation: ambient-primary 3s ease-in-out infinite alternate;
+}
+
+.secondaryBand {
+  inset: -32% -28%;
+  background: linear-gradient(104deg, transparent 29%, rgba(248, 222, 149, 0.18) 37%, rgba(226, 115, 79, 0.68) 45%, rgba(255, 201, 204, 0.36) 49%, rgba(255, 255, 255, 0.2) 52%, rgba(91, 12, 13, 0.18) 60%, transparent 70%);
+  transform: rotate(15deg) translate3d(16%, 5%, 0);
+  animation: ambient-secondary 4s ease-in-out infinite alternate;
+}
+
+.bloom {
+  background: linear-gradient(118deg, transparent 10%, rgba(240, 4, 16, 0.34) 25%, rgba(84, 13, 18, 0.48) 43%, rgba(173, 132, 10, 0.42) 63%, transparent 84%);
+  transform: rotate(-27deg) translate3d(10%, 4%, 0);
+  opacity: 0.58;
+  animation: ambient-bloom 6s ease-in-out infinite alternate;
+}
+
+.person {
+  position: absolute;
+  z-index: 1;
+  top: auto;
+  right: 0;
+  bottom: 0;
+  left: auto;
+  width: clamp(560px, 43vw, 720px);
+  height: auto;
+}
+
+.personImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.control {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 4;
+  display: flex;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  background: rgba(13, 13, 13, 0.72);
+  color: #fff;
+  font-size: 0.75rem;
+  transition: background-color 180ms ease;
+}
+
+.control:hover {
+  background: rgba(13, 13, 13, 0.92);
+}
+
+.control:focus-visible {
+  outline: 2px solid #d9281a;
+  outline-offset: 3px;
+}
+
+[data-motion="paused"] .lightLayer {
+  animation-play-state: paused;
+}
+
+[data-motion="running"] .lightLayer {
+  animation-play-state: running;
+}
+
+@keyframes ambient-primary {
+  from { transform: rotate(-17deg) translate3d(-12%, -2%, 0); opacity: 0.82; }
+  to { transform: rotate(-10deg) translate3d(13%, 6%, 0); opacity: 1; }
+}
+
+@keyframes ambient-secondary {
+  from { transform: rotate(15deg) translate3d(16%, 5%, 0); opacity: 0.62; }
+  to { transform: rotate(7deg) translate3d(-13%, -6%, 0); opacity: 0.96; }
+}
+
+@keyframes ambient-bloom {
+  from { opacity: 0.38; transform: rotate(-7deg) translate3d(10%, 4%, 0); }
+  to { opacity: 0.68; transform: rotate(-14deg) translate3d(-8%, -3%, 0); }
+}
+
+@media (max-width: 767px) {
+  .person {
+    right: -18%;
+    bottom: 0;
+    width: min(92vw, 430px);
+  }
+
+  .primaryBand {
+    inset: -34% -62%;
+  }
+
+  .secondaryBand {
+    inset: -28% -54%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightLayer {
+    animation: none !important;
+  }
+
+  .control {
+    display: none;
+  }
+}
