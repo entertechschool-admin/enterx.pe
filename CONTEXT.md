@@ -154,6 +154,12 @@ Los siguientes productos y relaciones comerciales están aprobados para comunica
 
 No se comunican métricas, porcentajes, SLAs ni resultados atribuidos a estos productos.
 
+## 9.1 Alianzas
+
+- **PathPilot** — "Partner tecnológico".
+- **Sprinta** — "Partner tecnológico".
+- **Enter Tech School** — "EnterX es la unidad B2B de". No se presenta como partner.
+
 ## 10. Datos de contacto
 
 - **WhatsApp (CTA principal):** `+51 964 401 918`.

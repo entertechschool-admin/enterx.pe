@@ -31,7 +31,7 @@
 - Deploy: **Vercel** → dominio **`enterx.pe`** (ver `CLAUDE.md` para flujo de deploy/DNS).
 - Sin backend en v1 (CTA = link a WhatsApp, no formulario).
 
-## Estructura — 5 secciones + navbar + footer
+## Estructura — 6 secciones + navbar + footer
 
 > Orden de la página. Numeración mono `01 — …` estilo manual. Registro premium/sobrio.
 
@@ -81,7 +81,14 @@
 - Los tres productos son visibles sin interacción. Cada uno usa una escena HTML/CSS simbólica y sutil; no carrusel, dashboards, métricas simuladas ni JavaScript propio.
 - La escena reduce movimiento a una composición estática legible con `prefers-reduced-motion`.
 
-### SECCIÓN 5 — CTA (oscuro full-bleed `#0D0D0D`)
+### SECCIÓN 5 — ALIANZAS (panel editorial compacto, fondo oscuro)
+- Va entre Productos y el CTA final.
+- Título: **"Tecnología y respaldo"**.
+- PathPilot y Sprinta se agrupan como **"Partners tecnológicos"**, con la relación individual **"Partner tecnológico"** visible.
+- Enter Tech School queda en un área secundaria con **"EnterX es la unidad B2B de"**; no se presenta como partner.
+- Logos con `next/image`, sin CTA, email, métricas ni JavaScript propio.
+
+### SECCIÓN 6 — CTA (oscuro full-bleed `#0D0D0D`)
 - **Elementos:** isótopo · tagline de marca **"No dejamos a las empresas dependientes de nosotros.
   Las dejamos capaces."** · botón WhatsApp "Conversemos".
 - Los enlaces de WhatsApp y sus datos viven en `CONTEXT.md §0` y `§10`.
@@ -110,10 +117,11 @@ Blog, páginas internas, formulario con backend, multi-idioma, CMS, analítica a
 
 ## Definición de terminado (checklist)
 
-- [ ] Navbar + 5 secciones + footer, fieles a `CONTEXT.md`.
+- [ ] Navbar + 6 secciones + footer, fieles a `CONTEXT.md`.
 - [ ] Timeline 4 niveles con hover/touch (característica + icono) y N3 en rojo; vertical en mobile.
 - [ ] 3 tarjetas de valor con SVG simbólicos; Co-implementación destacada.
 - [ ] Catálogo de tres productos visible sin interacción; Luna protagonista y relaciones PathPilot/Sprinta visibles.
+- [ ] Alianzas: PathPilot/Sprinta como partners tecnológicos y relación organizacional con Enter Tech School claramente diferenciadas.
 - [ ] Geist/Geist Mono vía `next/font`; accent `#D9281A`; cero color fuera de la paleta.
 - [ ] Responsive verificado (mobile + desktop); animaciones respetan `prefers-reduced-motion`.
 - [ ] `npm run build` sin errores; consola limpia.

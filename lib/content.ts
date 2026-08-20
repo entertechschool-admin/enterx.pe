@@ -187,6 +187,47 @@ export const value = {
 // ---- Productos para tu empresa ------------------------------------------
 
 export type ProductKind = "luna" | "operations" | "sales";
+export type PartnerKey = "pathpilot" | "sprinta";
+
+export type PartnerBrand = {
+  name: string;
+  relationship: "Partner tecnológico";
+  logo: string;
+  width: number;
+  height: number;
+};
+
+/** Fuente única de identidad para las marcas tecnológicas públicas. */
+export const PARTNER_BRANDS = {
+  pathpilot: {
+    name: "PathPilot",
+    relationship: "Partner tecnológico",
+    logo: "/partners/pathpilot.png",
+    width: 374,
+    height: 102,
+  },
+  sprinta: {
+    name: "Sprinta",
+    relationship: "Partner tecnológico",
+    logo: "/partners/sprinta.png",
+    width: 521,
+    height: 114,
+  },
+} as const satisfies Record<PartnerKey, PartnerBrand>;
+
+export const alliances = {
+  label: "Alianzas",
+  title: "Tecnología y respaldo",
+  technologiesLabel: "Partners tecnológicos",
+  brands: [PARTNER_BRANDS.pathpilot, PARTNER_BRANDS.sprinta],
+  organization: {
+    introduction: "EnterX es la unidad B2B de",
+    name: "Enter Tech School",
+    logo: "/partners/enter-tech-school.png",
+    width: 3262,
+    height: 1130,
+  },
+} as const;
 
 export type Product = {
   name: string;
@@ -194,12 +235,7 @@ export type Product = {
   kind: ProductKind;
   featured?: boolean;
   label?: string;
-  partner?: {
-    name: "PathPilot" | "Sprinta";
-    logo: string;
-    width: number;
-    height: number;
-  };
+  partner?: PartnerKey;
 };
 
 export const products = {
@@ -220,24 +256,14 @@ export const products = {
       description:
         "Agentes que cubren 4 procesos con clientes: onboarding, atención, cobranzas y cumplimiento.",
       kind: "operations",
-      partner: {
-        name: "PathPilot",
-        logo: "/partners/pathpilot.png",
-        width: 374,
-        height: 102,
-      },
+      partner: "pathpilot",
     },
     {
       name: "Agentes de Ventas",
       description:
         "Agentes inteligentes para WhatsApp que atienden, califican y convierten leads automáticamente.",
       kind: "sales",
-      partner: {
-        name: "Sprinta",
-        logo: "/partners/sprinta.png",
-        width: 521,
-        height: 114,
-      },
+      partner: "sprinta",
     },
   ] as const satisfies readonly Product[],
   scenes: {
