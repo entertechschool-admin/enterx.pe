@@ -5,6 +5,7 @@ import { StatBand } from "@/components/sections/StatBand";
 import { Timeline } from "@/components/sections/Timeline";
 import { ValueProps } from "@/components/sections/ValueProps";
 import { Products } from "@/components/sections/Products";
+import { Partners } from "@/components/sections/Partners";
 import { FinalCta } from "@/components/sections/FinalCta";
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
         <Timeline />
         <ValueProps />
         <Products />
+        <Partners />
         <FinalCta />
       </main>
       <Footer />

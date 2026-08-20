@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { products, type ProductKind } from "@/lib/content";
+import { PARTNER_BRANDS, products, type Product, type ProductKind } from "@/lib/content";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import styles from "./Products.module.css";
@@ -28,22 +28,24 @@ export function Products() {
 }
 
 type ProductCardProps = {
-  product: (typeof products.items)[number];
+  product: Product;
   featured?: boolean;
 };
 
 function ProductCard({ product, featured = false }: ProductCardProps) {
+  const partner = product.partner ? PARTNER_BRANDS[product.partner] : null;
+
   return (
     <article className={`${styles.card} ${featured ? styles.featuredCard : ""}`}>
       <div className={styles.copy}>
         <div className={styles.meta}>
-          {"label" in product ? <span className={styles.ownLabel}>{product.label}</span> : null}
-          {"partner" in product ? (
+          {product.label ? <span className={styles.ownLabel}>{product.label}</span> : null}
+          {partner ? (
             <Image
-              src={product.partner.logo}
-              alt={product.partner.name}
-              width={product.partner.width}
-              height={product.partner.height}
+              src={partner.logo}
+              alt={partner.name}
+              width={partner.width}
+              height={partner.height}
               sizes="150px"
               className={styles.partnerLogo}
             />
