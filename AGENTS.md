@@ -13,7 +13,11 @@ Leer y respetar, en este orden:
 1. `SPEC.md`: alcance y definición de terminado.
 2. `CONTEXT.md`: copy, datos, claims y contactos.
 3. `brand/reference/manual-de-marca.html`: identidad visual.
-4. `CLAUDE.md`: guardrails, stack, zonas delicadas y operación local.
+4. `CLAUDE.md`: notas de compatibilidad para ClaudeCode, stack, zonas delicadas y operación local.
+
+`AGENTS.md` gobierna el flujo y los roles compartidos. `CLAUDE.md` no puede sustituirlo ni
+contradecirlo; si contiene una instrucción específica de ClaudeCode, se aplica solo dentro de
+ese contexto.
 
 Si dos fuentes se contradicen, no improvisar: explicar el conflicto y pedir decisión a Bruno.
 
@@ -37,7 +41,7 @@ Si dos fuentes se contradicen, no improvisar: explicar el conflicto y pedir deci
 - No introducir dependencias, assets pesados, animaciones complejas ni nuevos patrones globales
   sin justificar coste, alternativa simple y beneficio.
 - Respetar accesibilidad, `prefers-reduced-motion`, SEO y las zonas delicadas documentadas en
-  `CLAUDE.md` (especialmente video del hero, fondos y metadata).
+  `CLAUDE.md` (especialmente hero, fondos y metadata).
 
 ## Ritmo de trabajo
 

@@ -1,0 +1,335 @@
+.card {
+  display: grid;
+  min-height: 360px;
+  gap: 32px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  background: #1A1A1A;
+  padding: 28px;
+}
+
+.featuredCard {
+  min-height: 390px;
+  border-color: rgba(217, 40, 26, 0.42);
+  background: linear-gradient(108deg, #1A1A1A 0%, #1A1A1A 54%, #210d0b 100%);
+}
+
+.copy {
+  position: relative;
+  z-index: 1;
+}
+
+.meta {
+  display: flex;
+  min-height: 26px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.ownLabel {
+  border: 1px solid rgba(217, 40, 26, 0.45);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.partnerLogo {
+  width: auto;
+  max-width: 138px;
+  height: 24px;
+  object-fit: contain;
+  object-position: left center;
+  opacity: 0.82;
+}
+
+.scene {
+  position: relative;
+  min-height: 168px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  background: #0D0D0D;
+}
+
+.lunaScene {
+  display: grid;
+  grid-template-columns: 1fr 76px 1fr;
+  align-items: center;
+  min-height: 218px;
+  padding: 26px;
+}
+
+.lunaSources {
+  display: grid;
+  justify-items: start;
+  gap: 10px;
+}
+
+.sourceChip,
+.operationNode,
+.salesStep {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.sourceChip {
+  padding: 8px 11px;
+}
+
+.lunaRoute,
+.operationsRoute,
+.salesRoute {
+  position: absolute;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.lunaRoute {
+  left: 30%;
+  right: 29%;
+  top: 50%;
+}
+
+.lunaRoute::after,
+.operationsRoute::after,
+.salesRoute::after {
+  position: absolute;
+  right: 0;
+  top: -3px;
+  width: 6px;
+  height: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
+  transform: rotate(45deg);
+  content: "";
+}
+
+.lunaCore {
+  position: relative;
+  z-index: 1;
+  grid-column: 2;
+  display: grid;
+  width: 54px;
+  height: 54px;
+  place-items: center;
+  justify-self: center;
+  border: 1px solid rgba(217, 40, 26, 0.72);
+  border-radius: 999px;
+  background: #1A1A1A;
+}
+
+.coreDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: #D9281A;
+  box-shadow: 0 0 0 7px rgba(217, 40, 26, 0.13);
+}
+
+.lunaSignal,
+.operationsSignal,
+.salesSignal {
+  position: absolute;
+  z-index: 2;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #D9281A;
+  opacity: 0.8;
+}
+
+.lunaSignal {
+  left: 31%;
+  top: calc(50% - 3px);
+}
+
+.teamField {
+  display: grid;
+  grid-template-columns: repeat(2, 18px);
+  align-items: center;
+  justify-content: end;
+  gap: 10px;
+}
+
+.teamField span {
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.teamField small {
+  grid-column: 1 / -1;
+  margin-top: 4px;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.operationsScene {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding: 22px;
+}
+
+.operationsRoute {
+  left: 26%;
+  right: 24%;
+  top: 50%;
+  transform: rotate(-16deg);
+}
+
+.operationNode {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  text-align: center;
+}
+
+.operationNode:nth-of-type(odd) {
+  transform: translate3d(0, 5px, 0);
+}
+
+.operationsSignal {
+  left: 46%;
+  top: 47%;
+}
+
+.salesScene {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  gap: 8px;
+  padding: 22px;
+}
+
+.salesRoute {
+  left: 17%;
+  right: 17%;
+  top: 50%;
+}
+
+.salesStep {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  min-height: 72px;
+  place-items: center;
+  gap: 6px;
+  padding: 9px 5px;
+  text-align: center;
+}
+
+.salesStep i {
+  display: grid;
+  width: 18px;
+  height: 18px;
+  place-items: center;
+  border: 1px solid rgba(217, 40, 26, 0.65);
+  border-radius: 999px;
+  background: #1A1A1A;
+  color: #D9281A;
+  font-style: normal;
+}
+
+.salesSignal {
+  left: 18%;
+  top: calc(50% - 3px);
+}
+
+.salesBubble {
+  position: absolute;
+  right: 22px;
+  bottom: 19px;
+  width: 20px;
+  height: 16px;
+  border: 1px solid rgba(217, 40, 26, 0.7);
+  border-radius: 8px;
+  opacity: 0.72;
+}
+
+.salesBubble::after {
+  position: absolute;
+  right: 2px;
+  bottom: -4px;
+  width: 5px;
+  height: 5px;
+  border-bottom: 1px solid rgba(217, 40, 26, 0.7);
+  border-right: 1px solid rgba(217, 40, 26, 0.7);
+  transform: rotate(45deg);
+  content: "";
+}
+
+@keyframes luna-flow {
+  0%, 18% { opacity: 0; transform: translate3d(0, 0, 0); }
+  32%, 72% { opacity: 0.9; }
+  82%, 100% { opacity: 0; transform: translate3d(128px, 0, 0); }
+}
+
+@keyframes operations-flow {
+  0%, 20% { opacity: 0; transform: translate3d(-18px, 8px, 0); }
+  36%, 72% { opacity: 0.8; }
+  85%, 100% { opacity: 0; transform: translate3d(84px, -24px, 0); }
+}
+
+@keyframes sales-flow {
+  0%, 15% { opacity: 0; transform: translate3d(0, 0, 0); }
+  28%, 72% { opacity: 0.9; }
+  84%, 100% { opacity: 0; transform: translate3d(155px, 0, 0); }
+}
+
+@media (min-width: 768px) {
+  .featuredCard {
+    grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
+    align-items: center;
+    padding: 42px;
+  }
+
+  .card:not(.featuredCard) {
+    grid-template-rows: auto 1fr;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover .lunaSignal {
+    animation: luna-flow 3.6s ease-in-out;
+  }
+
+  .card:hover .operationsSignal {
+    animation: operations-flow 3.8s ease-in-out;
+  }
+
+  .card:hover .salesSignal {
+    animation: sales-flow 3.4s ease-in-out;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lunaSignal,
+  .operationsSignal,
+  .salesSignal,
+  .card:hover .lunaSignal,
+  .card:hover .operationsSignal,
+  .card:hover .salesSignal {
+    animation: none;
+  }
+}

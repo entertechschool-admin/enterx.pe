@@ -31,7 +31,7 @@
 - Deploy: **Vercel** → dominio **`enterx.pe`** (ver `CLAUDE.md` para flujo de deploy/DNS).
 - Sin backend en v1 (CTA = link a WhatsApp, no formulario).
 
-## Estructura — 4 secciones + navbar + footer
+## Estructura — 5 secciones + navbar + footer
 
 > Orden de la página. Numeración mono `01 — …` estilo manual. Registro premium/sobrio.
 
@@ -74,10 +74,17 @@
 - Copy exacto en `CONTEXT.md §líneas`.
 - Frase superior opcional: "Capacidad instalada. No dependencia. Lo que construimos, tu equipo lo opera."
 
-### SECCIÓN 4 — CTA (oscuro full-bleed `#0D0D0D`)
+### SECCIÓN 4 — PRODUCTOS PARA TU EMPRESA (catálogo editorial, fondo oscuro)
+- Va entre Servicios y el CTA final.
+- **Agente Luna AI** es el panel protagonista, a todo lo ancho, con la etiqueta "Producto propio de EnterX".
+- **Agentes Operativos** y **Agentes de Ventas** se presentan en dos columnas en desktop y apilados en mobile; sus logos PathPilot y Sprinta hacen visible la relación aprobada.
+- Los tres productos son visibles sin interacción. Cada uno usa una escena HTML/CSS simbólica y sutil; no carrusel, dashboards, métricas simuladas ni JavaScript propio.
+- La escena reduce movimiento a una composición estática legible con `prefers-reduced-motion`.
+
+### SECCIÓN 5 — CTA (oscuro full-bleed `#0D0D0D`)
 - **Elementos:** isótopo · tagline de marca **"No dejamos a las empresas dependientes de nosotros.
   Las dejamos capaces."** · botón WhatsApp "Conversemos".
-- Los enlaces de WhatsApp y sus datos viven en `CONTEXT.md §0` y `§9`.
+- Los enlaces de WhatsApp y sus datos viven en `CONTEXT.md §0` y `§10`.
 
 ### FOOTER
 - `EnterX · enterx.pe · 2026` + línea de respaldo compacta: **CETEMIN · Enter Tech School**.
@@ -103,9 +110,10 @@ Blog, páginas internas, formulario con backend, multi-idioma, CMS, analítica a
 
 ## Definición de terminado (checklist)
 
-- [ ] Navbar + 4 secciones + footer, fieles a `CONTEXT.md`.
+- [ ] Navbar + 5 secciones + footer, fieles a `CONTEXT.md`.
 - [ ] Timeline 4 niveles con hover/touch (característica + icono) y N3 en rojo; vertical en mobile.
 - [ ] 3 tarjetas de valor con SVG simbólicos; Co-implementación destacada.
+- [ ] Catálogo de tres productos visible sin interacción; Luna protagonista y relaciones PathPilot/Sprinta visibles.
 - [ ] Geist/Geist Mono vía `next/font`; accent `#D9281A`; cero color fuera de la paleta.
 - [ ] Responsive verificado (mobile + desktop); animaciones respetan `prefers-reduced-motion`.
 - [ ] `npm run build` sin errores; consola limpia.

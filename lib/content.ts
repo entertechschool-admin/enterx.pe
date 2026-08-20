@@ -184,6 +184,69 @@ export const value = {
   ] as ValueCard[],
 } as const;
 
+// ---- Productos para tu empresa ------------------------------------------
+
+export type ProductKind = "luna" | "operations" | "sales";
+
+export type Product = {
+  name: string;
+  description: string;
+  kind: ProductKind;
+  featured?: boolean;
+  label?: string;
+  partner?: {
+    name: "PathPilot" | "Sprinta";
+    logo: string;
+    width: number;
+    height: number;
+  };
+};
+
+export const products = {
+  label: "Productos",
+  title: "Productos para tu empresa",
+  ownLabel: "Producto propio de EnterX",
+  items: [
+    {
+      name: "Agente Luna AI",
+      description:
+        "Agente que personaliza la formación de tu equipo: aprende con el contenido y contexto de tu propia organización.",
+      kind: "luna",
+      featured: true,
+      label: "Producto propio de EnterX",
+    },
+    {
+      name: "Agentes Operativos",
+      description:
+        "Agentes que cubren 4 procesos con clientes: onboarding, atención, cobranzas y cumplimiento.",
+      kind: "operations",
+      partner: {
+        name: "PathPilot",
+        logo: "/partners/pathpilot.png",
+        width: 374,
+        height: 102,
+      },
+    },
+    {
+      name: "Agentes de Ventas",
+      description:
+        "Agentes inteligentes para WhatsApp que atienden, califican y convierten leads automáticamente.",
+      kind: "sales",
+      partner: {
+        name: "Sprinta",
+        logo: "/partners/sprinta.png",
+        width: 521,
+        height: 114,
+      },
+    },
+  ] as const satisfies readonly Product[],
+  scenes: {
+    luna: ["Contenido", "Contexto", "Equipo"],
+    operations: ["Onboarding", "Atención", "Cobranzas", "Cumplimiento"],
+    sales: ["Atender", "Calificar", "Convertir"],
+  },
+} as const;
+
 // ---- Cierre (CTA) y footer ----------------------------------------------
 
 export const closing = {
