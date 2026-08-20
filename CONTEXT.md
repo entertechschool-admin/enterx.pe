@@ -144,14 +144,25 @@ superlativos vacíos y jerga de moda · promesas que no sostenemos con práctica
 
 (En discovery no se vende, se entiende: el cliente habla el **70%** del tiempo.)
 
-## 9. Datos de contacto
+## 9. Productos para tu empresa
 
-- **WhatsApp (CTA principal):** `[POR VALIDAR — pedir número +51 a Bruno antes de publicar]`
-  → botón "Conversemos" / `wa.me/51XXXXXXXXX`.
+Los siguientes productos y relaciones comerciales están aprobados para comunicación pública.
+
+1. **Agente Luna AI** — "Agente que personaliza la formación de tu equipo: aprende con el contenido y contexto de tu propia organización." Etiqueta: **"Producto propio de EnterX"**.
+2. **Agentes Operativos** — "Agentes que cubren 4 procesos con clientes: onboarding, atención, cobranzas y cumplimiento." Relación visible con **PathPilot** mediante su logo.
+3. **Agentes de Ventas** — "Agentes inteligentes para WhatsApp que atienden, califican y convierten leads automáticamente." Relación visible con **Sprinta** mediante su logo.
+
+No se comunican métricas, porcentajes, SLAs ni resultados atribuidos a estos productos.
+
+## 10. Datos de contacto
+
+- **WhatsApp (CTA principal):** `+51 964 401 918`.
+  → botón "Conversemos" / `wa.me/51964401918`.
 - **Email:** `[POR VALIDAR — definir hola@enterx.pe vs correo actual]`.
 - **Dominio:** `enterx.pe` (principal) · `enterx.io` (global).
 
-> ⚠️ No publicar el sitio con datos de contacto en placeholder. El CTA es obligatorio antes del live.
+> El WhatsApp está validado y cableado en `lib/site.ts`. El email sigue pendiente y no debe
+> inventarse ni publicarse hasta ser confirmado.
 
 ---
 

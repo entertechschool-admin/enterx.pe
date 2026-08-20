@@ -24,21 +24,15 @@ CETEMIN). Tu rol aquí: **implementar el sitio** según la spec, fiel a la marca
 > Regla de oro: **SPEC.md manda el qué, CONTEXT.md manda el contenido, el manual manda el look.**
 > Si los tres se contradicen, para y pregunta a Bruno antes de improvisar.
 
-## Cómo trabajar — flujo en 4 fases (OBLIGATORIO)
+## Cómo trabajar
 
-1. **Planifica primero, en plan mode.** Lee SPEC + CONTEXT + el manual, y propón un plan de
-   implementación dividido en **4 fases**. **Tú defines el contenido y el corte de las 4 fases** —
-   tienes margen creativo para decidir cómo agruparlas (p. ej. scaffold → estructura+contenido →
-   interacción+a11y → SEO+QA+deploy, pero el corte es tuyo). Muéstrale el plan a Bruno.
-2. **No implementes hasta tener su aprobación.** El plan se aprueba antes de tocar código.
-3. **Una fase = un commit + push.** Al cerrar cada fase, commit limpio y push. Mensajes claros
-   (`feat: ...`, `chore: ...`). Cada fase debe dejar el repo en estado coherente y construible.
-4. **Verifica al final.** El paso de QA en navegador (build limpio, responsive, accesibilidad,
-   consola sin errores) va en la **última fase**, no fase por fase — para no frenar la cadencia.
+El flujo compartido está definido en `AGENTS.md` mediante FAST LOOP, FULL LOOP e INTERLOOP.
+ClaudeCode debe respetarlo. Puede proponer planes y cortes adecuados al riesgo, pero no existe un
+número fijo de fases, ni push automático, ni QA diferido por obligación.
 
-> **Margen creativo:** dentro de los guardrails y la marca, decide layout, composición, micro-
-> interacciones, jerarquía y detalle visual. SPEC fija el *qué* y el *contenido*; el *cómo se ve y
-> se siente* es tu criterio de diseño. Sorprende, pero mantente sobrio y fiel al brand book.
+El margen creativo se mantiene dentro de los guardrails y la marca: SPEC fija el *qué* y el
+contenido; el *cómo se ve y se siente* puede evolucionar con criterio, evidencia y aprobación de
+Bruno cuando cambie materialmente el alcance.
 
 ## Estándares de construcción (SDD + diseño 2026)
 
@@ -62,7 +56,7 @@ CETEMIN). Tu rol aquí: **implementar el sitio** según la spec, fiel a la marca
 
 - **No inventas negocio ni datos.** Cifras, contacto, claims → solo los de `CONTEXT.md`. Lo que
   falte queda como `[POR VALIDAR]` visible, nunca rellenado a ojo. (Especialmente el **contacto**:
-  ver `CONTEXT.md §9` — el sitio **no se publica** con el CTA en placeholder.)
+  ver `CONTEXT.md §10` — el sitio **no se publica** con el CTA en placeholder.)
 - **Marca:** acento **único `#D9281A`** (rojo) sobre negro `#0D0D0D`. **Sin degradados chillones,
   sin "humo IA"** (cerebros, circuitos, robots, partículas azules genéricas). Tipografía **Geist**
   + **Geist Mono**. Nada de colores fuera de la paleta del manual.
